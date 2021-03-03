@@ -41,13 +41,17 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { CuboidComponent } from './components/cuboid/cuboid.component';
 import { Pagenotfound404Component } from './components/pagenotfound404/pagenotfound404.component';
+import { ChiSquareTestComponent } from './components/chi-square-test/chi-square-test.component';
+import { BinningComponent } from './components/binning/binning.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     CuboidComponent,
-    Pagenotfound404Component
+    Pagenotfound404Component,
+    ChiSquareTestComponent,
+    BinningComponent
   ],
   imports: [
     BrowserModule,

@@ -63,7 +63,7 @@
             </tbody>
         </table>
         <hr>
-        <h3>Unique values found: <u style="text-transform: uppercase">{{unique_value}}</u></h3>
+        <h3>Unique values found: <b style="text-transform: uppercase">{{unique_value}}</b></h3>
         <hr>
         <h3>Cuboid:</h3>
         <div class="d-flex align-items-center flex-column">
@@ -71,7 +71,7 @@
             <div>{{data.in_1 | uppercase}}, {{data.in_2 | uppercase}}, {{data.in_3 | uppercase}}, {{data.in_4 | uppercase}}</div>
             <div style="text-transform: uppercase">{{unique_value}}</div>
             <div>{{col2_data[0] | uppercase}}, {{col2_data[1] | uppercase}}, {{col2_data[2] | uppercase}}, {{col2_data[3] | uppercase}}</div>
-            <div>all</div>
+            <div>{{data.in_1 | uppercase}}{{data.in_2 | uppercase}}{{data.in_3 | uppercase}}{{data.in_4 | uppercase}}</div>
         </div>
     </div>
 </div>
