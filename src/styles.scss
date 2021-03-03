@@ -12,18 +12,6 @@ $megacalculator-theme: mat-light-theme(
     ),
   )
 );
-$angular-dark-theme: mat-dark-theme(
-  (
-    color: (
-      primary: $megacalculator-primary,
-      accent: $megacalculator-accent,
-      warn: $megacalculator-warn,
-    ),
-  )
-);
-.darkMode {
-  @include angular-material-color($angular-dark-theme);
-}
 @include angular-material-theme($megacalculator-theme);
 
 html,
