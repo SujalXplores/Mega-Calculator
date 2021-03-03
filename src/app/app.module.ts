@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -52,6 +53,10 @@ import { Pagenotfound404Component } from './components/pagenotfound404/pagenotfo
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    LayoutModule,
+    FormsModule, 
+    ReactiveFormsModule,
+
     MatCheckboxModule,
     MatButtonModule,
     MatInputModule,
