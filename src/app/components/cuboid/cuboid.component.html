@@ -3,23 +3,23 @@
     <small>Enter single letters only. For e.g. Enter "t" only instead of time.</small>
     <form class="mx-auto mt-3" [formGroup]="cuboidForm" (ngSubmit)="onCuboid()" spellcheck="false" autocomplete="off">
         <mat-form-field class="mr-2" appearance="fill">
-            <mat-label>1</mat-label>
-            <input matInput formControlName="in_1" autofocus>
+            <mat-label>Variable 1</mat-label>
+            <input matInput formControlName="in_1" autofocus maxlength="1" placeholder="T">
             <mat-error>This field is required!</mat-error>
         </mat-form-field>
         <mat-form-field class="mr-2" appearance="fill">
-            <mat-label>2</mat-label>
-            <input matInput formControlName="in_2">
+            <mat-label>Variable 2</mat-label>
+            <input matInput formControlName="in_2" maxlength="1" placeholder="I">
             <mat-error>This field is required!</mat-error>
         </mat-form-field>
         <mat-form-field class="mr-2" appearance="fill">
-            <mat-label>3</mat-label>
-            <input matInput formControlName="in_3">
+            <mat-label>Variable 3</mat-label>
+            <input matInput formControlName="in_3" maxlength="1" placeholder="S">
             <mat-error>This field is required!</mat-error>
         </mat-form-field>
         <mat-form-field class="mr-2" appearance="fill">
-            <mat-label>4</mat-label>
-            <input matInput formControlName="in_4">
+            <mat-label>Variable 4</mat-label>
+            <input matInput formControlName="in_4" maxlength="1" placeholder="D">
             <mat-error>This field is required!</mat-error>
         </mat-form-field>
         <hr>
@@ -63,15 +63,37 @@
             </tbody>
         </table>
         <hr>
-        <h3>Unique values found: <b style="text-transform: uppercase">{{unique_value}}</b></h3>
+        <h3>Unique values found: <span class="text-uppercase">{{unique_value}}</span></h3>
         <hr>
         <h3>Cuboid:</h3>
-        <div class="d-flex align-items-center flex-column">
-            <div>all</div>
-            <div>{{data.in_1 | uppercase}}, {{data.in_2 | uppercase}}, {{data.in_3 | uppercase}}, {{data.in_4 | uppercase}}</div>
-            <div style="text-transform: uppercase">{{unique_value}}</div>
-            <div>{{col2_data[0] | uppercase}}, {{col2_data[1] | uppercase}}, {{col2_data[2] | uppercase}}, {{col2_data[3] | uppercase}}</div>
-            <div>{{data.in_1 | uppercase}}{{data.in_2 | uppercase}}{{data.in_3 | uppercase}}{{data.in_4 | uppercase}}</div>
+        <div class="table-responsive-sm">
+            <table class="table table-borderless text-center">
+                <tr>
+                    <td id="all" colspan="6">All</td>
+                </tr>
+                <br><br><br>
+                <tr>
+                    <td colspan="2" class="in_1 in">{{data.in_1 | uppercase}}</td>
+                    <td class="in_2 in">{{data.in_2 | uppercase}}</td>
+                    <td class="in_3 in">{{data.in_3 | uppercase}}</td>
+                    <td colspan="2" class="in_4 in">{{data.in_4 | uppercase}}</td>
+                </tr>
+                <br><br><br>
+                <tr>
+                    <td id="unq_1" *ngFor="let item of unique_value">{{item | uppercase}}</td>
+                </tr>
+                <br><br><br>
+                <tr>
+                    <td colspan="1"></td>
+                    <td *ngFor="let item of col2_data">{{item | uppercase}}</td>
+                    <td colspan="1"></td>
+                </tr>
+                <br><br><br>
+                <tr>
+                    <td colspan="6">{{data.in_1 | uppercase}}{{data.in_2 | uppercase}}{{data.in_3 |
+                        uppercase}}{{data.in_4 | uppercase}}</td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>

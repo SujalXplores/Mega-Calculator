@@ -25,3 +25,8 @@ body {
 button {
   outline: 0 !important;
 }
+button {
+  mat-icon {
+    margin-left: 0.5rem;
+  }
+}

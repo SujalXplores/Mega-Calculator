@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-cuboid',
@@ -7,7 +8,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./cuboid.component.scss']
 })
 export class CuboidComponent implements OnInit {
-  constructor() { }
+  constructor(private titleService: Title) { 
+    this.titleService.setTitle("Cuboid");
+  }
   cuboidForm: FormGroup;
   loading: boolean = false;
   is_table_show: boolean = false;
@@ -42,6 +45,6 @@ export class CuboidComponent implements OnInit {
     var tmpset = new Set(this.unique_value);
     this.unique_value = [...tmpset];
     this.loading = false;
-    this.is_table_show = true;
+    this.is_table_show = true;    
   }
 } 
