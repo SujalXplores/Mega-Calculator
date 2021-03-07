@@ -45,6 +45,6 @@ export class CuboidComponent implements OnInit {
     var tmpset = new Set(this.unique_value);
     this.unique_value = [...tmpset];
     this.loading = false;
-    this.is_table_show = true;    
+    this.is_table_show = true;
   }
 } 

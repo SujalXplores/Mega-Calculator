@@ -1,1 +1,63 @@
-<h1>Coming Soon...</h1>
+<div class="container mt-3">
+    <mat-horizontal-stepper color="primary" #stepper linear="false">
+        <!-- step 1 -->
+        <mat-step editable="false" label="Bin" [stepControl]="binningForm" state="looks_one">
+            <h1>Step 1: Enter digits separated with comma ( , )</h1>
+            <form class="mx-auto mt-3" [formGroup]="binningForm" (ngSubmit)="onBinning()" spellcheck="false"
+                autocomplete="off">
+                <mat-form-field class="mr-2 w-100" appearance="fill">
+                    <mat-label>Bin</mat-label>
+                    <input matInput formControlName="bins" pattern="^\d{1,9}(,\d{1,9})*$" autofocus required>
+                    <mat-hint>e.g. 1,20,35,40,5,6</mat-hint>
+                    <mat-error>This field is required!</mat-error>
+                </mat-form-field>
+                <hr>
+                <button class="mt-3" [disabled]="!binningForm.valid || loading" type="submit" mat-raised-button
+                    color="primary">
+                    <mat-icon *ngIf="loading">
+                        <mat-spinner mode="indeterminate" diameter="20"></mat-spinner>
+                    </mat-icon>
+                    <span *ngIf="!loading">Calculate</span>
+                </button>
+            </form>
+        </mat-step>
+        <!-- step 2 -->
+        <mat-step editable="false" label="N value" state="looks_two" [stepControl]="n_value_Form">
+            <div class="mt-3 mb-3">
+                <h3>Total length: {{num_array.length}}</h3>
+                <h3>Sorted Bins: <span>{{sorted_array}}</span></h3>
+                <h3>(MAX - MIN): {{sum}}</h3>
+                <h3>W = (MAX - MIN) / N: {{sum_by_total}}</h3>
+            </div>
+            <h1>Step 2:</h1>
+            <form class="mx-auto mt-3" [formGroup]="n_value_Form" (ngSubmit)="onAnswer()" spellcheck="false" autocomplete="off">
+                <mat-form-field class="mr-2 w-100" appearance="fill">
+                    <mat-label>Enter value for W</mat-label>
+                    <input matInput formControlName="n_value" type="number" maxlength="2" required>
+                    <mat-hint>Note: In question if value of W is given then enter that value!!!</mat-hint>
+                    <mat-error>This field is required!</mat-error>
+                </mat-form-field>
+                <button class="mt-3" [disabled]="!n_value_Form.valid || loading" type="submit" mat-raised-button
+                    color="primary">
+                    <mat-icon *ngIf="loading">
+                        <mat-spinner mode="indeterminate" diameter="20"></mat-spinner>
+                    </mat-icon>
+                    <span *ngIf="!loading">Answer</span>
+                </button>
+            </form>
+        </mat-step>
+        <!-- step 3 -->
+        <mat-step label="Answer" state="looks_3">
+            <h1>Answer</h1>
+            <h3><b>Partition of equi-depth bins of depth {{n_value}}</b></h3>
+            <h3 *ngFor="let item of splitted_array;let i=index;">Bin-{{i}}: {{item}}</h3>
+            <h3><b>Smoothing by Bin Means</b></h3>
+            <h3 *ngFor="let item of sum_array;let i=index;">Sum of Bin-{{i}} / N ≈ {{item}}</h3>
+            <h3 *ngFor="let x of bin_means;let i=index;">Bin-{{i}} ≈ {{bin_means[i]}}</h3>
+            <button class="mt-3" mat-raised-button (click)="onStepperReset()">
+                <mat-icon>replay</mat-icon>
+                <span>Reset</span>
+            </button>
+        </mat-step>
+    </mat-horizontal-stepper>
+</div>
