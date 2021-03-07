@@ -38,11 +38,18 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 import { CuboidComponent } from './components/cuboid/cuboid.component';
 import { Pagenotfound404Component } from './components/pagenotfound404/pagenotfound404.component';
 import { ChiSquareTestComponent } from './components/chi-square-test/chi-square-test.component';
 import { BinningComponent } from './components/binning/binning.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { LoginComponent } from './components/login/login.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { environment } from 'src/environments/environment';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -51,14 +58,16 @@ import { BinningComponent } from './components/binning/binning.component';
     CuboidComponent,
     Pagenotfound404Component,
     ChiSquareTestComponent,
-    BinningComponent
+    BinningComponent,
+    AdminComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
 
     MatCheckboxModule,
@@ -90,10 +99,14 @@ import { BinningComponent } from './components/binning/binning.component';
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ClipboardModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule
   ],
   providers: [
-    Title
+    Title,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

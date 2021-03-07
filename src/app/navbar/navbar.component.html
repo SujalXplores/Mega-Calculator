@@ -5,15 +5,15 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item [routerLinkActive]="['active']" routerLink="/cuboid">
+      <a mat-list-item [routerLinkActive]="['active']" routerLink="/nav/cuboid">
         <mat-icon>view_in_ar</mat-icon>
         <span>Cuboid (4D)</span>
       </a>
-      <a mat-list-item [routerLinkActive]="['active']" routerLink="/binning">
+      <a mat-list-item [routerLinkActive]="['active']" routerLink="/nav/binning">
         <mat-icon>bathroom</mat-icon>
         <span>Binning</span>
       </a>
-      <a mat-list-item [routerLinkActive]="['active']" routerLink="/chisquare">
+      <a mat-list-item [routerLinkActive]="['active']" routerLink="/nav/chisquare">
         <mat-icon>superscript</mat-icon>
         <span>Chi Square</span>
       </a>
@@ -51,7 +51,7 @@
             <mat-icon style="color: orange;">local_fire_department</mat-icon>
             <span>Hosted on Firebase</span>
           </button>
-          <button mat-menu-item>
+          <button mat-menu-item routerLink='/nav/admin'>
             <mat-icon color="primary">admin_panel_settings</mat-icon>
             <span>Sujal Shah</span>
           </button>

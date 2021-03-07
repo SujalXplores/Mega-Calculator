@@ -1,0 +1,38 @@
+<div id="overlay">
+    <h1 class="m-3">Admin Panel</h1>
+    <div class="m-3">
+        <mat-form-field appearance="fill">
+            <mat-label>Select Duration</mat-label>
+            <mat-select [(value)]="selected">
+                <mat-option *ngFor="let opt of options" [value]="opt.value">
+                    {{opt.value}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Your Key</mat-label>
+            <input matInput [(ngModel)]="value" disabled placeholder="Click Generate to get Key">
+        </mat-form-field>
+    </div>
+    <hr>
+    <button mat-stroked-button color="primary" class="ml-3 mr-3" (click)="onGenerate()">Generate Keys</button>
+    <button mat-stroked-button [cdkCopyToClipboard]="value">Copy to clipboard</button>
+    <hr>
+    <div class="m-3">
+        <h1>Active Users: {{user_info.length}}</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Key</td>
+                    <td>Duration</td>
+                    <td>Actions</td>
+                </tr>
+            </thead>
+            <tr *ngFor="let item of user_info">
+                <td>{{item.key}}</td>
+                <td>{{item.expiry}}</td>
+                <td><button mat-stroked-button color="warn" (click)="onDelete(item.id)">Delete</button></td>
+            </tr>
+        </table>
+    </div>
+</div>

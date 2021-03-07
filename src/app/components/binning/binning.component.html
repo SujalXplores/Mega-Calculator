@@ -2,7 +2,7 @@
     <mat-horizontal-stepper color="primary" #stepper linear="false">
         <!-- step 1 -->
         <mat-step editable="false" label="Bin" [stepControl]="binningForm" state="looks_one">
-            <h1>Step 1: Enter digits separated with comma ( , )</h1>
+            <h1>Step 1: Enter digits separated with comma(,)</h1>
             <form class="mx-auto mt-3" [formGroup]="binningForm" (ngSubmit)="onBinning()" spellcheck="false"
                 autocomplete="off">
                 <mat-form-field class="mr-2 w-100" appearance="fill">
