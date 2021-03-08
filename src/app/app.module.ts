@@ -50,6 +50,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { environment } from 'src/environments/environment';
 import { DatePipe } from '@angular/common';
+import { RedblackTreeComponent } from './components/redblack-tree/redblack-tree.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,8 @@ import { DatePipe } from '@angular/common';
     ChiSquareTestComponent,
     BinningComponent,
     AdminComponent,
-    LoginComponent
+    LoginComponent,
+    RedblackTreeComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +72,7 @@ import { DatePipe } from '@angular/common';
     LayoutModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
 
     MatCheckboxModule,
     MatButtonModule,

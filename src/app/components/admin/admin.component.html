@@ -8,7 +8,7 @@
                     {{opt.value}}
                 </mat-option>
             </mat-select>
-        </mat-form-field>
+        </mat-form-field><br>
         <mat-form-field appearance="fill">
             <mat-label>Your Key</mat-label>
             <input matInput [(ngModel)]="value" disabled placeholder="Click Generate to get Key">
@@ -19,7 +19,7 @@
     <button mat-stroked-button [cdkCopyToClipboard]="value">Copy to clipboard</button>
     <hr>
     <div class="m-3">
-        <h1>Active Users: {{user_info.length}}</h1>
+        <h1>Keys Generated: {{user_info.length}}  Total Visitors: {{this.count}}</h1>
         <table class="table">
             <thead>
                 <tr>

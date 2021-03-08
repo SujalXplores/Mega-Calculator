@@ -7,6 +7,7 @@ import { CuboidComponent } from './components/cuboid/cuboid.component';
 import { AuthguardService } from './components/login/authguard.service';
 import { LoginComponent } from './components/login/login.component';
 import { Pagenotfound404Component } from './components/pagenotfound404/pagenotfound404.component';
+import { RedblackTreeComponent } from './components/redblack-tree/redblack-tree.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'cuboid', component: CuboidComponent },
       { path: 'chisquare', component: ChiSquareTestComponent },
       { path: 'binning', component: BinningComponent },
+      { path: 'rbtree', component: RedblackTreeComponent }
     ]
   },
   { path: 'pagenotfound', component: Pagenotfound404Component },

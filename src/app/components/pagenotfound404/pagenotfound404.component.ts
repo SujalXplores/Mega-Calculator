@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-pagenotfound404',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Pagenotfound404Component implements OnInit {
 
-  constructor() { }
+  constructor(private titleService: Title) { 
+    this.titleService.setTitle("404 Page not found")
+  }
 
   ngOnInit(): void {
   }

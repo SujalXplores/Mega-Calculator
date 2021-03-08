@@ -35,7 +35,7 @@ export class BinningComponent implements OnInit {
 
   ngOnInit(): void {
     this.binningForm = new FormGroup({
-      bins: new FormControl("1,5,7,8,2,4,3,3")
+      bins: new FormControl("10,15,7,37,2,4,3,3,9,28,8")
     });
     this.n_value_Form = new FormGroup({
       n_value: new FormControl(null)

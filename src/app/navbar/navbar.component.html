@@ -1,10 +1,9 @@
 <mat-sidenav-container class="sidenav-container mat-app-background">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
+      <div mat-subheader>DMDA</div>
       <a mat-list-item [routerLinkActive]="['active']" routerLink="/nav/cuboid">
         <mat-icon>view_in_ar</mat-icon>
         <span>Cuboid (4D)</span>
@@ -15,44 +14,57 @@
       </a>
       <a mat-list-item [routerLinkActive]="['active']" routerLink="/nav/chisquare">
         <mat-icon>superscript</mat-icon>
-        <span>Chi Square</span>
+        <span>Chi Square table</span>
+      </a>
+      <mat-divider></mat-divider>
+      <div mat-subheader>DAA</div>
+      <a mat-list-item [routerLinkActive]="['active']" routerLink="/nav/rbtree">
+        <mat-icon style="transform: rotate(90deg)">share</mat-icon>
+        <span>Red Black Tree</span>
       </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>Mega Calculator</span>
       <div class="ml-auto">
+        <button mat-icon-button (click)='onLogout()'>
+          <mat-icon>logout</mat-icon>
+        </button>
         <button mat-icon-button [matMenuTriggerFor]="menu">
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item>
-            <mat-icon color="warn">hdr_auto</mat-icon>
-            <span>v11.1.2</span>
+          <button mat-menu-item routerLink='/nav/admin'>
+            <mat-icon color="primary">vpn_key</mat-icon>
+            <span>Admin Panel</span>
           </button>
           <button mat-menu-item (click)="telegram()">
             <mat-icon style="color: lightskyblue;">send</mat-icon>
             <span>Telegram Channel</span>
+          </button>
+          <button mat-menu-item href="mailto:shahc9437@gmail.com?subject=Bug Report">
+            <mat-icon color="warn">bug_report</mat-icon>
+            <span>Report Bug</span>
           </button>
           <button mat-menu-item>
             <mat-icon style="color: lightgreen;">https</mat-icon>
             <span>SSL/Encryption</span>
           </button>
           <button mat-menu-item>
-            <mat-icon style="color: orange;">local_fire_department</mat-icon>
-            <span>Hosted on Firebase</span>
+            <mat-icon color="warn">hdr_auto</mat-icon>
+            <span>Angular v11.1.2</span>
           </button>
-          <button mat-menu-item routerLink='/nav/admin'>
-            <mat-icon color="primary">admin_panel_settings</mat-icon>
+          <button mat-menu-item>
+            <mat-icon style="color: orange;">local_fire_department</mat-icon>
+            <span>Backed Firebase</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon color="warn">favorite</mat-icon>
             <span>Sujal Shah</span>
           </button>
         </mat-menu>

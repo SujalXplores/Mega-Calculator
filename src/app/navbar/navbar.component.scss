@@ -24,8 +24,8 @@ span {
   width: 100%;
 }
 
-.mat-list-item.active{
-  background: rgba(63,81,181,.15);
+.mat-list-item.active {
+  background: rgba(63, 81, 181, 0.15);
   color: #3f51b5;
 }
 
@@ -33,4 +33,7 @@ button {
   mat-icon {
     margin-left: 0.5rem;
   }
+}
+a :disabled {
+  background: #fff;
 }

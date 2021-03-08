@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -16,9 +17,17 @@ export class NavbarComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor(private _router: Router, private breakpointObserver: BreakpointObserver) { }
 
   telegram() {
     location.href = "https://t.me/technewsupdates0";
+  }
+
+  onLogout() {
+    var r = confirm("Are you sure to Logout?");
+    if(r==true) {
+      localStorage.clear();
+      this._router.navigate(['']);
+    }
   }
 }

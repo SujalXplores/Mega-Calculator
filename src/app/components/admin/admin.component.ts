@@ -5,6 +5,8 @@ import { environment } from "src/environments/environment.prod";
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Keygen } from './key.model';
 import { DatePipe } from '@angular/common';
+import { Title } from '@angular/platform-browser';
+import { Visitors } from 'src/app/visitors.model';
 
 @Component({
   selector: 'app-admin',
@@ -14,6 +16,8 @@ import { DatePipe } from '@angular/common';
 export class AdminComponent implements OnInit {
   value: string = '';
   user_info: Keygen[] = [];
+  visitor_count: Visitors[] = [];
+  count: number = 0;
   options: any[] = [
     { index: 0, value: '1 Day' },
     { index: 1, value: '1 Week' },
@@ -21,11 +25,31 @@ export class AdminComponent implements OnInit {
     { index: 3, value: 'Lifetime' }
   ];
   selected: any = this.options[0].value;
-  constructor(private datePipe: DatePipe,private _fireStore: AngularFirestore, private _router: Router, private _snackBar: MatSnackBar) { }
+  constructor(private titleService: Title, private datePipe: DatePipe,private _fireStore: AngularFirestore, private _router: Router, private _snackBar: MatSnackBar) { 
+    this.titleService.setTitle("Admin Panel");
+  }
 
   ngOnInit(): void {
     if (localStorage.getItem("admin") == environment.key) {
       document.getElementById("overlay").style.display = "block";
+      this._fireStore.collection("users").snapshotChanges().subscribe(arr => {
+        this.user_info = arr.map(item => {
+          return {
+            id: item.payload.doc.id,
+            key: item.payload.doc.data()['key'],
+            expiry: item.payload.doc.data()['expiry'],
+          } as Keygen;
+        });
+      });
+      this._fireStore.collection("visitor").auditTrail().subscribe(arr => {
+        this.visitor_count = arr.map(item => {
+          return {
+            id: item.payload.doc.id,
+            count: item.payload.doc.data()['count']
+          } as Visitors;
+        });
+        this.count = this.visitor_count[0].count;
+      });
     } else {
       var key = prompt("Enter Master Key");
       if (key == environment.key && key != null) {
@@ -41,15 +65,6 @@ export class AdminComponent implements OnInit {
         this._router.navigate(['']);
       }
     }
-    this._fireStore.collection("users").snapshotChanges().subscribe(arr => {
-      this.user_info = arr.map(item => {
-        return {
-          id: item.payload.doc.id,
-          key: item.payload.doc.data()['key'],
-          expiry: item.payload.doc.data()['expiry'],
-        } as Keygen;
-      });
-    });
   }
 
   onGenerate(): void {
