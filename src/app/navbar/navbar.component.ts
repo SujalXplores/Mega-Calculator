@@ -23,9 +23,13 @@ export class NavbarComponent {
     location.href = "https://t.me/technewsupdates0";
   }
 
+  bugReport() {
+    location.href = "mailto:shahc9437@gmail.com?subject=Bug Report";
+  }
+
   onLogout() {
     var r = confirm("Are you sure to Logout?");
-    if(r==true) {
+    if (r == true) {
       localStorage.clear();
       this._router.navigate(['']);
     }

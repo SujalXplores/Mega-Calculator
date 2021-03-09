@@ -162,6 +162,11 @@ section {
             color: #fff;
             font-size: 16px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            caret-color: red;
+        }
+
+        input[type="password"]:invalid {
+            border-color: red;
         }
 
         .view {
@@ -197,6 +202,7 @@ section {
             letter-spacing: 1px;
             cursor: pointer;
             transition: 1.5s;
+            user-select: none;
         }
 
         button[type="submit"]:hover {

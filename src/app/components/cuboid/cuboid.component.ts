@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 
@@ -8,7 +8,9 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./cuboid.component.scss']
 })
 export class CuboidComponent implements OnInit {
-  constructor(private titleService: Title) { 
+  @ViewChild('startingElement', { read: ElementRef }) startingElement: ElementRef;
+  @ViewChild('endingElement', { read: ElementRef }) endingElement: ElementRef;
+  constructor(private titleService: Title) {
     this.titleService.setTitle("Cuboid");
   }
   cuboidForm: FormGroup;
@@ -41,10 +43,10 @@ export class CuboidComponent implements OnInit {
     this.col3_data.push([this.data.in_1 + this.data.in_2, this.data.in_1 + this.data.in_3, this.data.in_2 + this.data.in_3]);
     this.col3_data.push([this.data.in_2 + this.data.in_3, this.data.in_2 + this.data.in_4, this.data.in_3 + this.data.in_4]);
     this.col3_data.push([this.data.in_3 + this.data.in_4, this.data.in_1 + this.data.in_3, this.data.in_1 + this.data.in_4]);
-    this.unique_value.push(this.data.in_1 + this.data.in_2, this.data.in_2 + this.data.in_4, this.data.in_1 + this.data.in_4,this.data.in_1 + this.data.in_2, this.data.in_1 + this.data.in_3, this.data.in_2 + this.data.in_3,this.data.in_2 + this.data.in_3, this.data.in_2 + this.data.in_4, this.data.in_3 + this.data.in_4, this.data.in_3 + this.data.in_4, this.data.in_1 + this.data.in_3, this.data.in_1 + this.data.in_4);
+    this.unique_value.push(this.data.in_1 + this.data.in_2, this.data.in_2 + this.data.in_4, this.data.in_1 + this.data.in_4, this.data.in_1 + this.data.in_2, this.data.in_1 + this.data.in_3, this.data.in_2 + this.data.in_3, this.data.in_2 + this.data.in_3, this.data.in_2 + this.data.in_4, this.data.in_3 + this.data.in_4, this.data.in_3 + this.data.in_4, this.data.in_1 + this.data.in_3, this.data.in_1 + this.data.in_4);
     var tmpset = new Set(this.unique_value);
     this.unique_value = [...tmpset];
     this.loading = false;
     this.is_table_show = true;
   }
-} 
+}

@@ -32,24 +32,6 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
     if (localStorage.getItem("admin") == environment.key) {
       document.getElementById("overlay").style.display = "block";
-      this._fireStore.collection("users").snapshotChanges().subscribe(arr => {
-        this.user_info = arr.map(item => {
-          return {
-            id: item.payload.doc.id,
-            key: item.payload.doc.data()['key'],
-            expiry: item.payload.doc.data()['expiry'],
-          } as Keygen;
-        });
-      });
-      this._fireStore.collection("visitor").auditTrail().subscribe(arr => {
-        this.visitor_count = arr.map(item => {
-          return {
-            id: item.payload.doc.id,
-            count: item.payload.doc.data()['count']
-          } as Visitors;
-        });
-        this.count = this.visitor_count[0].count;
-      });
     } else {
       var key = prompt("Enter Master Key");
       if (key == environment.key && key != null) {
@@ -65,6 +47,26 @@ export class AdminComponent implements OnInit {
         this._router.navigate(['']);
       }
     }
+    this._fireStore.collection("users").snapshotChanges().subscribe(arr => {
+      this.user_info = arr.map(item => {
+        return {
+          id: item.payload.doc.id,
+          key: item.payload.doc.data()['key'],
+          expiry: item.payload.doc.data()['expiry'],
+        } as Keygen;
+      });
+    });
+    this._fireStore.collection("visitor").snapshotChanges().subscribe(arr => {
+      this.visitor_count = arr.map(item => {
+        return {
+          id: item.payload.doc.id,
+          count: item.payload.doc.data()['count']
+        } as Visitors;
+      });
+    });
+    setTimeout(() => {
+      this.count = this.visitor_count[0].count;
+    }, 3000);
   }
 
   onGenerate(): void {

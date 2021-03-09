@@ -40,14 +40,18 @@
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item routerLink='/nav/admin'>
-            <mat-icon color="primary">vpn_key</mat-icon>
+            <mat-icon color="primary">badge</mat-icon>
             <span>Admin Panel</span>
           </button>
-          <button mat-menu-item (click)="telegram()">
-            <mat-icon style="color: lightskyblue;">send</mat-icon>
-            <span>Telegram Channel</span>
+          <button mat-menu-item>
+            <mat-icon color="warn">hdr_auto</mat-icon>
+            <span>Angular v11.1.2</span>
           </button>
-          <button mat-menu-item href="mailto:shahc9437@gmail.com?subject=Bug Report">
+          <button mat-menu-item (click)="telegram()">
+            <mat-icon color="accent">memory</mat-icon>
+            <span>Daily Tech News</span>
+          </button>
+          <button mat-menu-item (click)="bugReport()">
             <mat-icon color="warn">bug_report</mat-icon>
             <span>Report Bug</span>
           </button>
@@ -56,12 +60,8 @@
             <span>SSL/Encryption</span>
           </button>
           <button mat-menu-item>
-            <mat-icon color="warn">hdr_auto</mat-icon>
-            <span>Angular v11.1.2</span>
-          </button>
-          <button mat-menu-item>
             <mat-icon style="color: orange;">local_fire_department</mat-icon>
-            <span>Backed Firebase</span>
+            <span>Backed by Firebase</span>
           </button>
           <button mat-menu-item>
             <mat-icon color="warn">favorite</mat-icon>
