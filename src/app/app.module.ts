@@ -52,6 +52,9 @@ import { environment } from 'src/environments/environment';
 import { DatePipe } from '@angular/common';
 import { RedblackTreeComponent } from './components/redblack-tree/redblack-tree.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BinarySearchTreeComponent } from './components/binary-search-tree/binary-search-tree.component';
+import { DPLCSComponent } from './components/dplcs/dplcs.component';
+import { HeapComponent } from './components/heap/heap.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +66,10 @@ import { HttpClientModule } from '@angular/common/http';
     BinningComponent,
     AdminComponent,
     LoginComponent,
-    RedblackTreeComponent
+    RedblackTreeComponent,
+    BinarySearchTreeComponent,
+    DPLCSComponent,
+    HeapComponent
   ],
   imports: [
     BrowserModule,

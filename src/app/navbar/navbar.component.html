@@ -22,6 +22,18 @@
         <mat-icon style="transform: rotate(90deg)">share</mat-icon>
         <span>Red Black Tree</span>
       </a>
+      <a mat-list-item [routerLinkActive]="['active']" routerLink="/nav/bst">
+        <mat-icon>manage_search</mat-icon>
+        <span>Binary Search Tree</span>
+      </a>
+      <a mat-list-item [routerLinkActive]="['active']" routerLink="/nav/dplcs">
+        <mat-icon>spa</mat-icon>
+        <span>Longest Common Subsequence</span>
+      </a>
+      <a mat-list-item [routerLinkActive]="['active']" routerLink="/nav/heap">
+        <mat-icon>sort</mat-icon>
+        <span>Heap Sort</span>
+      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -62,10 +74,6 @@
           <button mat-menu-item>
             <mat-icon style="color: orange;">local_fire_department</mat-icon>
             <span>Backed by Firebase</span>
-          </button>
-          <button mat-menu-item>
-            <mat-icon color="warn">favorite</mat-icon>
-            <span>Sujal Shah</span>
           </button>
         </mat-menu>
       </div>
