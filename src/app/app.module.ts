@@ -55,6 +55,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BinarySearchTreeComponent } from './components/binary-search-tree/binary-search-tree.component';
 import { DPLCSComponent } from './components/dplcs/dplcs.component';
 import { HeapComponent } from './components/heap/heap.component';
+import { HotToastModule } from '@ngneat/hot-toast';
 
 @NgModule({
   declarations: [
@@ -112,7 +113,8 @@ import { HeapComponent } from './components/heap/heap.component';
     MatPaginatorModule,
     ClipboardModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    HotToastModule.forRoot()
   ],
   providers: [
     Title,

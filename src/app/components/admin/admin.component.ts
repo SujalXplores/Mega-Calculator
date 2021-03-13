@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { environment } from "src/environments/environment.prod";
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -7,6 +6,7 @@ import { Keygen } from './key.model';
 import { DatePipe } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 import { Visitors } from 'src/app/visitors.model';
+import { HotToastService } from '@ngneat/hot-toast';
 
 @Component({
   selector: 'app-admin',
@@ -25,7 +25,13 @@ export class AdminComponent implements OnInit {
     { index: 3, value: 'Lifetime' }
   ];
   selected: any = this.options[0].value;
-  constructor(private titleService: Title, private datePipe: DatePipe,private _fireStore: AngularFirestore, private _router: Router, private _snackBar: MatSnackBar) { 
+  constructor(
+    private titleService: Title, 
+    private datePipe: DatePipe, 
+    private _fireStore: AngularFirestore, 
+    private _router: Router, 
+    private toast: HotToastService
+  ) {
     this.titleService.setTitle("Admin Panel");
   }
 
@@ -35,14 +41,16 @@ export class AdminComponent implements OnInit {
     } else {
       var key = prompt("Enter Master Key");
       if (key == environment.key && key != null) {
-        this._snackBar.open("Access Granted", "x", {
-          duration: 3000,
+        this.toast.success('Access Granted', {
+          theme: 'snackbar',
+          position: 'bottom-center'
         });
         document.getElementById("overlay").style.display = "block";
         localStorage.setItem("admin", key);
       } else {
-        this._snackBar.open("Access Denied", "x", {
-          duration: 3000,
+        this.toast.error('Access Denied', {
+          theme: 'snackbar',
+          position: 'bottom-center'
         });
         this._router.navigate(['']);
       }
@@ -80,18 +88,20 @@ export class AdminComponent implements OnInit {
     } else if (this.selected == 'Lifetime') {
       var currentDate = new Date(+new Date() + 86400000 * 300000);
     }
-    
+
     let data = {
       "key": this.value,
       "expiry": this.datePipe.transform(currentDate.getTime())
     }
     this._fireStore.collection('users').add(data).then(() => {
-      this._snackBar.open("Key generated", "x", {
-        duration: 3000,
+      this.toast.success('Key generated', {
+        theme: 'snackbar',
+        position: 'bottom-center'
       });
     }).catch(e => {
-      this._snackBar.open(e, "x", {
-        duration: 3000,
+      this.toast.error(e, {
+        theme: 'snackbar',
+        position: 'bottom-center'
       });
     });
   }
@@ -99,8 +109,9 @@ export class AdminComponent implements OnInit {
   onDelete(id: string) {
     if (confirm("Are you sure to delete this record?")) {
       this._fireStore.doc('users/' + id).delete();
-      this._snackBar.open('Deleted successfully','x', {
-        duration: 3000,
+      this.toast.warning('Key Deleted successfully', {
+        theme: 'snackbar',
+        position: 'bottom-center'
       });
     }
   }

@@ -1,9 +1,9 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from "@angular/fire/firestore";
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { AngularFirestore } from "@angular/fire/firestore";
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { HotToastService } from '@ngneat/hot-toast';
 import { Keygen } from '../admin/key.model';
 
 @Component({
@@ -13,7 +13,13 @@ import { Keygen } from '../admin/key.model';
 })
 export class LoginComponent implements OnInit {
   user_info: Keygen[] = [];
-  constructor(private titleService: Title, private datePipe: DatePipe, private _fireStore: AngularFirestore, private _router: Router, private _snackbar: MatSnackBar) {
+  constructor(
+    private titleService: Title, 
+    private datePipe: DatePipe, 
+    private _fireStore: AngularFirestore, 
+    private _router: Router, 
+    private toast: HotToastService
+  ) {
     this.titleService.setTitle("Login");
   }
   ngOnInit(): void {
@@ -41,13 +47,15 @@ export class LoginComponent implements OnInit {
           this._router.navigate(['/nav/cuboid']);
         }, 5000);
       } else {
-        this._snackbar.open("Key is expired or deleted!", "x", {
-          duration: 3000,
+        this.toast.warning('This Key is expired !', {
+          theme: 'snackbar',
+          position: 'bottom-center'
         });
       }
     } else {
-      this._snackbar.open("Wrong key!", "x", {
-        duration: 3000,
+      this.toast.warning('Wrong key !', {
+        theme: 'snackbar',
+        position: 'bottom-center'
       });
     }
   }

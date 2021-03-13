@@ -5,34 +5,38 @@
     <mat-nav-list>
       <div mat-subheader>DMDA</div>
       <a mat-list-item [routerLinkActive]="['active']" routerLink="/nav/cuboid">
-        <mat-icon>view_in_ar</mat-icon>
+        <mat-icon class="material-icons-outlined">view_in_ar</mat-icon>
         <span>Cuboid (4D)</span>
       </a>
       <a mat-list-item [routerLinkActive]="['active']" routerLink="/nav/binning">
-        <mat-icon>bathroom</mat-icon>
+        <mat-icon class="material-icons-outlined">bathroom</mat-icon>
         <span>Binning</span>
       </a>
       <a mat-list-item [routerLinkActive]="['active']" routerLink="/nav/chisquare">
-        <mat-icon>superscript</mat-icon>
+        <mat-icon class="material-icons-outlined">superscript</mat-icon>
         <span>Chi Square table</span>
       </a>
       <mat-divider></mat-divider>
       <div mat-subheader>DAA</div>
       <a mat-list-item [routerLinkActive]="['active']" routerLink="/nav/rbtree">
-        <mat-icon style="transform: rotate(90deg)">share</mat-icon>
+        <mat-icon class="material-icons-outlined" style="transform: rotate(90deg)">share</mat-icon>
         <span>Red Black Tree</span>
       </a>
       <a mat-list-item [routerLinkActive]="['active']" routerLink="/nav/bst">
-        <mat-icon>manage_search</mat-icon>
+        <mat-icon class="material-icons-outlined">manage_search</mat-icon>
         <span>Binary Search Tree</span>
       </a>
       <a mat-list-item [routerLinkActive]="['active']" routerLink="/nav/dplcs">
-        <mat-icon>spa</mat-icon>
+        <mat-icon class="material-icons-outlined">spa</mat-icon>
         <span>Longest Common Subsequence</span>
       </a>
       <a mat-list-item [routerLinkActive]="['active']" routerLink="/nav/heap">
-        <mat-icon>sort</mat-icon>
+        <mat-icon class="material-icons-outlined">sort</mat-icon>
         <span>Heap Sort</span>
+      </a>
+      <a mat-list-item class="bmc-button" target="noopener noreferrer" href="https://www.buymeacoffee.com/sujal">
+        <img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee">
+        <span style="margin-left:5px">Buy me a coffee</span>
       </a>
     </mat-nav-list>
   </mat-sidenav>
@@ -40,39 +44,39 @@
     <mat-toolbar color="primary">
       <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        <mat-icon class="material-icons-outlined" aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>Mega Calculator</span>
       <div class="ml-auto">
         <button mat-icon-button (click)='onLogout()'>
-          <mat-icon>logout</mat-icon>
+          <mat-icon class="material-icons-outlined">logout</mat-icon>
         </button>
         <button mat-icon-button [matMenuTriggerFor]="menu">
-          <mat-icon>more_vert</mat-icon>
+          <mat-icon class="material-icons-outlined">more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item routerLink='/nav/admin'>
-            <mat-icon color="primary">badge</mat-icon>
+            <mat-icon class="material-icons-outlined" color="primary">badge</mat-icon>
             <span>Admin Panel</span>
           </button>
           <button mat-menu-item>
-            <mat-icon color="warn">hdr_auto</mat-icon>
+            <mat-icon class="material-icons-outlined" color="warn">hdr_auto</mat-icon>
             <span>Angular v11.1.2</span>
           </button>
           <button mat-menu-item (click)="telegram()">
-            <mat-icon color="accent">memory</mat-icon>
+            <mat-icon class="material-icons-outlined" color="accent">memory</mat-icon>
             <span>Daily Tech News</span>
           </button>
           <button mat-menu-item (click)="bugReport()">
-            <mat-icon color="warn">bug_report</mat-icon>
+            <mat-icon class="material-icons-outlined" color="warn">bug_report</mat-icon>
             <span>Report Bug</span>
           </button>
           <button mat-menu-item>
-            <mat-icon style="color: lightgreen;">https</mat-icon>
+            <mat-icon class="material-icons-outlined" style="color: lightgreen;">https</mat-icon>
             <span>SSL/Encryption</span>
           </button>
           <button mat-menu-item>
-            <mat-icon style="color: orange;">local_fire_department</mat-icon>
+            <mat-icon class="material-icons-outlined" style="color: orange;">local_fire_department</mat-icon>
             <span>Backed by Firebase</span>
           </button>
         </mat-menu>
