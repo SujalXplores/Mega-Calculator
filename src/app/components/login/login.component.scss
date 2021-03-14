@@ -52,7 +52,8 @@ section {
     }
 
     @keyframes square {
-        0%, 100% {
+        0%,
+        100% {
             transform: translateY(-20px);
         }
 
@@ -141,8 +142,10 @@ section {
     h1 {
         color: #fff;
         letter-spacing: 3px;
-        margin-bottom: 30px;
-        font-size: larger;
+        font-size: xx-large;
+        line-height: 54px;
+        font-weight: 500;
+        font-family: "Google Sans", sans-serif;
     }
 
     .inputBx {
@@ -162,11 +165,6 @@ section {
             color: #fff;
             font-size: 16px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            caret-color: red;
-        }
-
-        input[type="password"]:valid {
-            border-color: green;
         }
 
         .view {
@@ -174,10 +172,18 @@ section {
             transition: 0.5s;
         }
 
-        img {
+        .key {
             position: absolute;
             top: 6px;
             left: 8px;
+            transform: scale(0.6);
+            filter: invert(1);
+        }
+
+        .eye {
+            position: absolute;
+            top: 6px;
+            right: 8px;
             transform: scale(0.6);
             filter: invert(1);
         }

@@ -13,6 +13,8 @@ import { Keygen } from '../admin/key.model';
 })
 export class LoginComponent implements OnInit {
   user_info: Keygen[] = [];
+  hide: boolean = true;
+  eye: string = '../../../assets/eve_close.svg';
   constructor(
     private titleService: Title, 
     private datePipe: DatePipe, 
@@ -57,6 +59,14 @@ export class LoginComponent implements OnInit {
         theme: 'snackbar',
         position: 'bottom-center'
       });
+    }
+  }
+
+  onShow() {
+    if(this.hide) {
+      this.eye = '../../../assets/eye.svg';
+    } else {
+      this.eye = '../../../assets/eve_close.svg';
     }
   }
 }

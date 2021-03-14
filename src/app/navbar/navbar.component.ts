@@ -23,8 +23,20 @@ export class NavbarComponent {
     location.href = "https://t.me/technewsupdates0";
   }
 
+  angular() {
+    location.href = "https://angular.io";
+  }
+
+  firebase() {
+    location.href = "https://firebase.google.com";
+  }
+
   bugReport() {
     location.href = "mailto:shahc9437@gmail.com?subject=Bug Report";
+  }
+
+  sslCheck() {
+    location.href = "https://www.sslshopper.com/ssl-checker.html#hostname=https://megacalculator-4234.web.app";
   }
 
   onLogout() {

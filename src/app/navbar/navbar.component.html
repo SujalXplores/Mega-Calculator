@@ -59,9 +59,9 @@
             <mat-icon class="material-icons-outlined" color="primary">badge</mat-icon>
             <span>Admin Panel</span>
           </button>
-          <button mat-menu-item>
+          <button mat-menu-item (click)="angular()">
             <mat-icon class="material-icons-outlined" color="warn">hdr_auto</mat-icon>
-            <span>Angular v11.1.2</span>
+            <span>Angular v11.2.5</span>
           </button>
           <button mat-menu-item (click)="telegram()">
             <mat-icon class="material-icons-outlined" color="accent">memory</mat-icon>
@@ -71,11 +71,11 @@
             <mat-icon class="material-icons-outlined" color="warn">bug_report</mat-icon>
             <span>Report Bug</span>
           </button>
-          <button mat-menu-item>
+          <button mat-menu-item (click)="sslCheck()">
             <mat-icon class="material-icons-outlined" style="color: lightgreen;">https</mat-icon>
-            <span>SSL/Encryption</span>
+            <span>Safety Check</span>
           </button>
-          <button mat-menu-item>
+          <button mat-menu-item (click)="firebase()">
             <mat-icon class="material-icons-outlined" style="color: orange;">local_fire_department</mat-icon>
             <span>Backed by Firebase</span>
           </button>

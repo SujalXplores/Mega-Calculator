@@ -12,21 +12,25 @@
             <div class="square" style="--i:5;"></div>
             <div class="container">
                 <div class="form">
-                    <h1>MEGA CALCULATOR</h1>
-                    <form>
+                    <h1>Mega Calculator</h1>
+                    <form autocomplete="off" spellcheck="false">
                         <div class="inputBx password">
-                            <input #key id="password-input" type="password" required placeholder="Enter Key">
-                            <img src="https://www.flaticon.com/svg/static/icons/svg/566/566076.svg" alt="key">
+                            <input #key id="password-input" [type]="hide ? 'password' : 'text'" required placeholder="Enter Key">
+                            <img class="key" src="../../../assets/key.svg" alt="key">
+                            <img class="eye" (click)="onShow(); hide=!hide" [src]="eye" alt="eye">
                         </div>
                         <div class="inputBx">
                             <button type="submit" (click)="onLogin(key.value)">Login</button>
                         </div>
                     </form>
-                    <p>Need Key? <a href="https://wa.me/919601188998?text=I%20want%20key%20for%20Log%20in%20" target="noopener noreferer"><u>Click Here</u></a></p>
+                    <p>Need Key? <a href="https://wa.me/919601188998?text=I%20want%20key%20for%20Log%20in%20"
+                            target="noopener noreferer"><u>Click Here</u></a></p>
                 </div>
             </div>
-            <footer style="text-align: center; color: #fff; cursor: default; user-select: none;">Made with <span style="color: red;">&#10084;</span> by Sujal Shah</footer>
+            <footer class="mt-1" style="text-align: center; color: #fff; cursor: default; user-select: none;">Made with
+                <span style="color: red;">&#10084;</span> by Sujal Shah</footer>
         </div>
     </section>
 </body>
+
 </html>
