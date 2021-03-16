@@ -16,10 +16,10 @@ export class LoginComponent implements OnInit {
   hide: boolean = true;
   eye: string = '../../../assets/eve_close.svg';
   constructor(
-    private titleService: Title, 
-    private datePipe: DatePipe, 
-    private _fireStore: AngularFirestore, 
-    private _router: Router, 
+    private titleService: Title,
+    private datePipe: DatePipe,
+    private _fireStore: AngularFirestore,
+    private _router: Router,
     private toast: HotToastService
   ) {
     this.titleService.setTitle("Login");
@@ -44,18 +44,23 @@ export class LoginComponent implements OnInit {
       var dateCur = new Date(today);
       var keyDate = new Date(expiry.expiry);
       if (keyDate >= dateCur) {
-        setTimeout(() => {
-          localStorage.setItem("pass", expiry.key);
-          this._router.navigate(['/nav/cuboid']);
-        }, 5000);
+        this.toast.show("Welcome Aboard Sir", {
+          theme: 'snackbar',
+          icon: '😄',
+          position: 'bottom-center'
+        });
+        localStorage.setItem("pass", expiry.key);
+        this._router.navigate(['/nav/cuboid']);
       } else {
         this.toast.warning('This Key is expired !', {
+          id: 'pause',
           theme: 'snackbar',
           position: 'bottom-center'
         });
       }
     } else {
       this.toast.warning('Wrong key !', {
+        id: 'pause',
         theme: 'snackbar',
         position: 'bottom-center'
       });
@@ -63,7 +68,7 @@ export class LoginComponent implements OnInit {
   }
 
   onShow() {
-    if(this.hide) {
+    if (this.hide) {
       this.eye = '../../../assets/eye.svg';
     } else {
       this.eye = '../../../assets/eve_close.svg';

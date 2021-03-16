@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 
@@ -8,8 +8,6 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./cuboid.component.scss']
 })
 export class CuboidComponent implements OnInit {
-  @ViewChild('startingElement', { read: ElementRef }) startingElement: ElementRef;
-  @ViewChild('endingElement', { read: ElementRef }) endingElement: ElementRef;
   constructor(private titleService: Title) {
     this.titleService.setTitle("Cuboid");
   }
@@ -22,17 +20,18 @@ export class CuboidComponent implements OnInit {
   unique_value: any = [];
   ngOnInit(): void {
     this.cuboidForm = new FormGroup({
-      in_1: new FormControl(null, [Validators.required]),
-      in_2: new FormControl(null, [Validators.required]),
-      in_3: new FormControl(null, [Validators.required]),
-      in_4: new FormControl(null, [Validators.required])
-    });
+      in_1: new FormControl("T", [Validators.required]),
+      in_2: new FormControl("I", [Validators.required]),
+      in_3: new FormControl("S", [Validators.required]),
+      in_4: new FormControl("D", [Validators.required])
+    })
   }
 
-  onCuboid() {
+  onCuboid(): void {
     this.col2_data = [];
     this.col3_data = [];
     this.unique_value = [];
+    this.data = [];
     this.loading = true;
     this.data = this.cuboidForm.value;
     this.col2_data.push(this.data.in_1 + this.data.in_2 + this.data.in_4);

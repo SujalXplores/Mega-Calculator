@@ -1,0 +1,16 @@
+<div class="text-center">
+    <h1 mat-dialog-title>
+        <mat-icon color="primary" style="font-size: 40px;">directions_run</mat-icon>
+    </h1>
+    <div mat-dialog-content>
+        <p>Are you sure you want to quit?</p>
+    </div>
+    <div mat-dialog-actions class="row">
+        <div class="col">
+            <button mat-stroked-button class="w-100 mr-1" (click)="onDismiss()">No</button>
+        </div>
+        <div class="col">
+            <button mat-raised-button class="w-100" color="primary" (click)="onConfirm()">Yes</button>
+        </div>
+    </div>
+</div>

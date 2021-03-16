@@ -1,9 +1,10 @@
-import { Component, HostBinding } from '@angular/core';
+import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-navbar',
@@ -17,7 +18,11 @@ export class NavbarComponent {
       shareReplay()
     );
 
-  constructor(private _router: Router, private breakpointObserver: BreakpointObserver) { }
+  constructor(
+    private _router: Router, 
+    private breakpointObserver: BreakpointObserver,
+    private dialog: MatDialog
+  ) { }
 
   telegram() {
     location.href = "https://t.me/technewsupdates0";
@@ -40,10 +45,10 @@ export class NavbarComponent {
   }
 
   onLogout() {
-    var r = confirm("Are you sure to Logout?");
-    if (r == true) {
-      localStorage.clear();
-      this._router.navigate(['']);
-    }
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: "300px",
+      autoFocus: false,
+      disableClose: true
+    });
   }
 }

@@ -56,6 +56,8 @@ import { BinarySearchTreeComponent } from './components/binary-search-tree/binar
 import { DPLCSComponent } from './components/dplcs/dplcs.component';
 import { HeapComponent } from './components/heap/heap.component';
 import { HotToastModule } from '@ngneat/hot-toast';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { PasswordDialogComponent } from './components/admin/password-dialog/password-dialog.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,9 @@ import { HotToastModule } from '@ngneat/hot-toast';
     RedblackTreeComponent,
     BinarySearchTreeComponent,
     DPLCSComponent,
-    HeapComponent
+    HeapComponent,
+    ConfirmDialogComponent,
+    PasswordDialogComponent
   ],
   imports: [
     BrowserModule,

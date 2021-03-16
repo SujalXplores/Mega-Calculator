@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { environment } from "src/environments/environment.prod";
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Keygen } from './key.model';
 import { DatePipe } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 import { Visitors } from 'src/app/visitors.model';
 import { HotToastService } from '@ngneat/hot-toast';
+import { PasswordDialogComponent } from './password-dialog/password-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-admin',
@@ -26,11 +27,11 @@ export class AdminComponent implements OnInit {
   ];
   selected: any = this.options[0].value;
   constructor(
-    private titleService: Title, 
-    private datePipe: DatePipe, 
-    private _fireStore: AngularFirestore, 
-    private _router: Router, 
-    private toast: HotToastService
+    private titleService: Title,
+    private datePipe: DatePipe,
+    private _fireStore: AngularFirestore,
+    private toast: HotToastService,
+    private dialog: MatDialog
   ) {
     this.titleService.setTitle("Admin Panel");
   }
@@ -39,28 +40,18 @@ export class AdminComponent implements OnInit {
     if (localStorage.getItem("admin") == environment.key) {
       document.getElementById("overlay").style.display = "block";
     } else {
-      var key = prompt("Enter Master Key");
-      if (key == environment.key && key != null) {
-        this.toast.success('Access Granted', {
-          theme: 'snackbar',
-          position: 'bottom-center'
-        });
-        document.getElementById("overlay").style.display = "block";
-        localStorage.setItem("admin", key);
-      } else {
-        this.toast.error('Access Denied', {
-          theme: 'snackbar',
-          position: 'bottom-center'
-        });
-        this._router.navigate(['']);
-      }
+      this.dialog.open(PasswordDialogComponent, {
+        width: "300px",
+        autoFocus: true,
+        disableClose: false
+      });
     }
     this._fireStore.collection("users").snapshotChanges().subscribe(arr => {
       this.user_info = arr.map(item => {
         return {
           id: item.payload.doc.id,
           key: item.payload.doc.data()['key'],
-          expiry: item.payload.doc.data()['expiry'],
+          expiry: item.payload.doc.data()['expiry']
         } as Keygen;
       });
     });
@@ -71,10 +62,8 @@ export class AdminComponent implements OnInit {
           count: item.payload.doc.data()['count']
         } as Visitors;
       });
-    });
-    setTimeout(() => {
       this.count = this.visitor_count[0].count;
-    }, 3000);
+    });
   }
 
   onGenerate(): void {
@@ -88,7 +77,6 @@ export class AdminComponent implements OnInit {
     } else if (this.selected == 'Lifetime') {
       var currentDate = new Date(+new Date() + 86400000 * 300000);
     }
-
     let data = {
       "key": this.value,
       "expiry": this.datePipe.transform(currentDate.getTime())
