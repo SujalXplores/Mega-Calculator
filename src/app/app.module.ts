@@ -58,6 +58,7 @@ import { HeapComponent } from './components/heap/heap.component';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { PasswordDialogComponent } from './components/admin/password-dialog/password-dialog.component';
+import { MasterTheormComponent } from './components/master-theorm/master-theorm.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { PasswordDialogComponent } from './components/admin/password-dialog/pass
     DPLCSComponent,
     HeapComponent,
     ConfirmDialogComponent,
-    PasswordDialogComponent
+    PasswordDialogComponent,
+    MasterTheormComponent
   ],
   imports: [
     BrowserModule,
