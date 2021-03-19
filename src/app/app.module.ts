@@ -59,6 +59,7 @@ import { HotToastModule } from '@ngneat/hot-toast';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { PasswordDialogComponent } from './components/admin/password-dialog/password-dialog.component';
 import { MasterTheormComponent } from './components/master-theorm/master-theorm.component';
+import { DecisionTheoryComponent } from './components/decision-theory/decision-theory.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { MasterTheormComponent } from './components/master-theorm/master-theorm.
     HeapComponent,
     ConfirmDialogComponent,
     PasswordDialogComponent,
-    MasterTheormComponent
+    MasterTheormComponent,
+    DecisionTheoryComponent
   ],
   imports: [
     BrowserModule,

@@ -12,6 +12,7 @@ import { LoginComponent } from './components/login/login.component';
 import { MasterTheormComponent } from './components/master-theorm/master-theorm.component';
 import { Pagenotfound404Component } from './components/pagenotfound404/pagenotfound404.component';
 import { RedblackTreeComponent } from './components/redblack-tree/redblack-tree.component';
+import { DecisionTheoryComponent } from './components/decision-theory/decision-theory.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
 const routes: Routes = [
@@ -28,7 +29,8 @@ const routes: Routes = [
       { path: 'dplcs', component: DPLCSComponent },
       { path: 'bst', component: BinarySearchTreeComponent },
       { path: 'heap', component: HeapComponent },
-      { path: 'mastertheorm', component: MasterTheormComponent }
+      { path: 'mastertheorm', component: MasterTheormComponent },
+      { path: 'decisionTheory', component: DecisionTheoryComponent }
     ]
   },
   { path: 'pagenotfound', component: Pagenotfound404Component },
