@@ -60,6 +60,8 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
 import { PasswordDialogComponent } from './components/admin/password-dialog/password-dialog.component';
 import { MasterTheormComponent } from './components/master-theorm/master-theorm.component';
 import { DecisionTheoryComponent } from './components/decision-theory/decision-theory.component';
+import { SocialLoginModule,  GoogleLoginProvider, SocialAuthServiceConfig } from "angularx-social-login";
+import { ViewMoreComponent } from './components/admin/view-more/view-more.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +80,8 @@ import { DecisionTheoryComponent } from './components/decision-theory/decision-t
     ConfirmDialogComponent,
     PasswordDialogComponent,
     MasterTheormComponent,
-    DecisionTheoryComponent
+    DecisionTheoryComponent,
+    ViewMoreComponent
   ],
   imports: [
     BrowserModule,
@@ -122,11 +125,24 @@ import { DecisionTheoryComponent } from './components/decision-theory/decision-t
     ClipboardModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    HotToastModule.forRoot()
+    HotToastModule.forRoot(),
+    SocialLoginModule
   ],
   providers: [
     Title,
-    DatePipe
+    DatePipe,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(environment.glp)
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    }
   ],
   bootstrap: [AppComponent]
 })

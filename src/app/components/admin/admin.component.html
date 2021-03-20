@@ -2,65 +2,37 @@
     <h1 class="m-3">Admin Panel</h1>
     <div class="m-3">
         <div class="row">
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body">
-                        <mat-form-field appearance="fill" class="w-100">
-                            <mat-label>Select Duration</mat-label>
-                            <mat-select [(value)]="selected">
-                                <mat-option *ngFor="let opt of options" [value]="opt.value">
-                                    {{opt.value}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field><br>
-                        <mat-form-field appearance="fill" class="w-100">
-                            <mat-label>Your Key</mat-label>
-                            <input matInput [(ngModel)]="value" disabled placeholder="Click Generate to get Key">
-                        </mat-form-field>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h1 mat-dialog-title>
-                            <mat-icon color="primary" style="font-size: 40px;">vpn_key</mat-icon>
-                        </h1>
-                        <h3 class="card-title">Keys Generated</h3>
-                        <h4 class="card-subtitle mb-2">{{user_info.length}}</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
+            <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
                         <h1 mat-dialog-title>
                             <mat-icon color="accent" style="font-size: 40px;">people</mat-icon>
                         </h1>
-                        <h3 class="card-title">Total Visitors</h3>
-                        <h4 class="card-subtitle mb-2">{{count}}</h4>
+                        <h3 class="card-title">Total Users</h3>
+                        <h4 class="card-subtitle mb-2">{{user_info.length}}</h4>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <hr>
-    <button mat-stroked-button color="primary" class="ml-3 mr-3" (click)="onGenerate()">Generate Key</button>
-    <button mat-stroked-button [cdkCopyToClipboard]="value">Copy</button>
-    <hr>
     <div class="m-3">
         <table class="table mat-elevation-z8 mt-3">
             <thead>
                 <tr>
-                    <td>Key</td>
-                    <td>Duration</td>
+                    <td>Pic</td>
+                    <td>Name</td>
                     <td>Actions</td>
                 </tr>
             </thead>
             <tr *ngFor="let item of user_info">
-                <td>{{item.key}}</td>
-                <td>{{item.expiry}}</td>
-                <td><button mat-stroked-button color="warn" (click)="onDelete(item.id)">Delete</button></td>
+                <td><img class="border border-primary rounded-circle mr-2" width="35px" height="35px" [src]="item.photoUrl" /></td>
+                <td>{{item.name}}</td>
+                <td>
+                    <button mat-icon-button color="accent" (click)="viewMore(item)">
+                        <mat-icon>open_in_new</mat-icon>
+                    </button>
+                </td>
             </tr>
         </table>
     </div>

@@ -1,38 +1,15 @@
-<!DOCTYPE html>
-<html>
-
-<body>
-    <section>
-        <div class="box">
-            <div class="square" style="--i:0;"></div>
-            <div class="square" style="--i:1;"></div>
-            <div class="square" style="--i:2;"></div>
-            <div class="square" style="--i:3;"></div>
-            <div class="square" style="--i:4;"></div>
-            <div class="square" style="--i:5;"></div>
-            <div class="container">
-                <div class="form">
-                    <h1>Mega Calculator</h1>
-                    <form autocomplete="off" spellcheck="false">
-                        <div class="inputBx password">
-                            <input #key id="password-input" [type]="hide ? 'password' : 'text'" required placeholder="Enter Key">
-                            <img class="key" src="../../../assets/key.svg" alt="key">
-                            <img class="eye" (click)="onShow(); hide=!hide" [src]="eye" alt="eye">
-                        </div>
-                        <div class="inputBx">
-                            <button type="submit" (click)="onLogin(key.value)">Login</button>
-                        </div>
-                    </form>
-                    <p>Need Key? 
-                        <a href="https://wa.me/919601188998?text=I%20want%20key%20for%20Log%20in%20" target="noopener noreferer">
-                            <u>Click Here</u>
-                        </a>
-                    </p>
-                </div>
+<body class="text-center">
+    <form class="form-signin border border-primary rounded">
+        <img class="mb-4" src="../../../assets/logo.svg" alt="" width="72" height="72">
+        <h1 class="h3 mb-5 font-weight-normal">Mega Calculator</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-outline-dark" role="button" style="text-transform:none" (click)="onGoogleSignIn()">
+                    <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+                    Login with Google
+                </button>
             </div>
-            <footer class="mt-2" style="text-align: center; color: #fff; cursor: default; user-select: none;">Built in <img src="../../../assets/ng.svg" style="font-size: 1px;"/> by Sujal Shah</footer>
         </div>
-    </section>
+        <p class="mt-5 mb-1 text-muted">Built in <img src="../../../assets/ng.svg" height="30px" width="30px" /> by Sujal Shah  &nbsp;  &nbsp; v11.2.6</p>
+    </form>
 </body>
-
-</html>

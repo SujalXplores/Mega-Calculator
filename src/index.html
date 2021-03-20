@@ -13,104 +13,86 @@
   <!-- bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <style type="text/css">
-    @keyframes spin3D {
-      from {
-        transform: rotate3d(.5, .5, .5, 360deg);
-      }
-
-      to {
-        transform: rotate3d(0deg);
-      }
+    body {
+      width: 100%;
+      height: 100vh;
+      background: #3498db;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    #main {
-      min-height: 100vh;
-      background-color: #1d2630;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .spinner-box {
-      width: 300px;
-      height: 300px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: transparent;
-    }
-
-    .leo {
-      position: absolute;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 50%;
-    }
-
-    .blue-orbit {
-      width: 165px;
-      height: 165px;
-      border: 1px solid #91daffa5;
-      animation: spin3D 3s linear .2s infinite;
-    }
-
-    .green-orbit {
-      width: 120px;
-      height: 120px;
-      border: 1px solid #91ffbfa5;
-      animation: spin3D 2s linear 0s infinite;
-    }
-
-    .red-orbit {
-      width: 90px;
-      height: 90px;
-      border: 1px solid #ffca91a5;
-      animation: spin3D 1s linear 0s infinite;
-    }
-
-    .white-orbit {
-      width: 60px;
+    .book {
+      top: 50%;
+      transform: translateY(-50%);
+      position: relative;
+      margin: 0 auto;
+      border: 5px solid #ecf0f1;
+      width: 100px;
       height: 60px;
-      border: 2px solid #ffffff;
-      animation: spin3D 10s linear 0s infinite;
     }
 
-    .w1 {
-      transform: rotate3D(1, 1, 1, 90deg);
+    .book__page {
+      position: absolute;
+      left: 50%;
+      top: -5px;
+      margin: 0 auto;
+      border-top: 5px solid #ecf0f1;
+      border-bottom: 5px solid #ecf0f1;
+      border-right: 5px solid #ecf0f1;
+      background: #3498db;
+      width: 50px;
+      height: 60px;
+      transform-origin: 0% 50%;
+      animation: flip 1.2s infinite linear;
+      animation-fill-mode: forwards;
     }
 
-    .w2 {
-      transform: rotate3D(1, 2, .5, 90deg);
-    }
+    @keyframes flip {
+      0% {
+        transform: perspective(600px) rotateY(-0deg);
+      }
 
-    .w3 {
-      transform: rotate3D(.5, 1, 2, 90deg);
+      20% {
+        background: darken(#3498db, 10%);
+      }
+
+      29.9% {
+        background: darken(#3498db, 10%);
+      }
+
+      30% {
+        transform: perspective(200px) rotateY(-90deg);
+        background: #3498db;
+      }
+
+      54.999% {
+        opacity: 1;
+      }
+
+      55% {
+        opacity: 0;
+      }
+
+      60% {
+        transform: perspective(200px) rotateY(-180deg);
+        background: #3498db;
+      }
+
+      100% {
+        transform: perspective(200px) rotateY(-180deg);
+        background: #3498db;
+      }
     }
   </style>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
-
 <body class="mat-typography">
   <app-root>
-    <div id="main">
-      <div class="spinner-box">
-        <div class="blue-orbit leo"></div>
-        <div class="green-orbit leo"></div>
-        <div class="red-orbit leo"></div>
-        <div class="white-orbit w1 leo"></div>
-        <div class="white-orbit w2 leo"></div>
-        <div class="white-orbit w3 leo"></div>
-      </div>
+    <div class="book">
+      <div class="book__page"></div>
+      <div class="book__page"></div>
+      <div class="book__page"></div>
     </div>
   </app-root>
 </body>
-
 </html>

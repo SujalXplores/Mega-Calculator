@@ -1,77 +1,100 @@
-import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AngularFirestore } from "@angular/fire/firestore";
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
-import { Keygen } from '../admin/key.model';
+import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { User } from './user.model';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
-  user_info: Keygen[] = [];
-  hide: boolean = true;
-  eye: string = '../../../assets/eve_close.svg';
+export class LoginComponent implements OnInit, OnDestroy {
+  user: SocialUser;
+  user_info: User[] = [];
+  private unsubscribe = new Subject();
+  is_exist: any;
+  a: any;
   constructor(
     private titleService: Title,
-    private datePipe: DatePipe,
     private _fireStore: AngularFirestore,
     private _router: Router,
-    private toast: HotToastService
+    private toast: HotToastService,
+    private auth: SocialAuthService
   ) {
     this.titleService.setTitle("Login");
   }
+
   ngOnInit(): void {
-    this._fireStore.collection("users").snapshotChanges().subscribe(arr => {
+    this._fireStore.collection("gusers").snapshotChanges().subscribe(arr => {
       this.user_info = arr.map(item => {
         return {
           id: item.payload.doc.id,
-          key: item.payload.doc.data()['key'],
-          expiry: item.payload.doc.data()['expiry'],
-        } as Keygen;
+          guid: item.payload.doc.data()['guid'],
+          name: item.payload.doc.data()['name'],
+          photoUrl: item.payload.doc.data()['photoUrl']
+        } as User;
       });
     });
   }
 
-  onLogin(k: any) {
-    var currentDate = new Date();
-    var today = this.datePipe.transform(currentDate.getTime());
-    var expiry = this.user_info.find(({ key }) => key == k);
-    if (expiry != undefined) {
-      var dateCur = new Date(today);
-      var keyDate = new Date(expiry.expiry);
-      if (keyDate >= dateCur) {
-        this.toast.show("Welcome Aboard Sir", {
-          theme: 'snackbar',
-          icon: '😄',
-          position: 'bottom-center'
-        });
-        localStorage.setItem("pass", expiry.key);
-        this._router.navigate(['/nav/cuboid']);
-      } else {
-        this.toast.warning('This Key is expired !', {
-          id: 'pause',
-          theme: 'snackbar',
-          position: 'bottom-center'
-        });
-      }
-    } else {
-      this.toast.warning('Wrong key !', {
-        id: 'pause',
+  ngOnDestroy(): void {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
+  }
+  
+  onGoogleSignIn(): void {
+    this.auth.signIn(GoogleLoginProvider.PROVIDER_ID).then(()=>{
+      this._router.navigate(['/nav/cuboid']);
+    },()=>{
+      this.toast.warning("Login window closed !", {
         theme: 'snackbar',
         position: 'bottom-center'
       });
-    }
-  }
-
-  onShow() {
-    if (this.hide) {
-      this.eye = '../../../assets/eye.svg';
-    } else {
-      this.eye = '../../../assets/eve_close.svg';
-    }
+    });
+    this.auth.authState.pipe(takeUntil(this.unsubscribe)).subscribe((user) => {
+      this.user = user;
+      console.log(this.user);
+      if (user != null) {
+        this.is_exist = this.user_info.find(({ guid }) => guid == user.id);
+        if (this.is_exist) {
+          localStorage.setItem('id', user.id);
+          localStorage.setItem('photoUrl', user.photoUrl);
+          localStorage.setItem('name', user.name);
+          this.toast.show("Welcome Aboard " + user.firstName, {
+            theme: 'snackbar',
+            icon: '😄',
+            position: 'bottom-center'
+          });
+        } else {
+          const udata = {
+            "guid": this.user.id,
+            "name": this.user.name,
+            "email": this.user.email,
+            "photoUrl": this.user.photoUrl,
+            "isPremium": false
+          };
+          this._fireStore.collection('gusers').add(udata).then(() => {
+            localStorage.setItem('id', user.id);
+            localStorage.setItem('photoUrl', user.photoUrl);
+            localStorage.setItem('name', user.name);
+            this.toast.show("Welcome Aboard " + user.firstName, {
+              theme: 'snackbar',
+              icon: '😄',
+              position: 'bottom-center'
+            });
+          }).catch(() => {
+            this.toast.warning("Something went wrong !", {
+              theme: 'snackbar',
+              position: 'bottom-center'
+            });
+          });
+        }
+      }
+    });
   }
 }

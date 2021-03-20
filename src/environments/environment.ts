@@ -14,6 +14,7 @@ export const environment = {
         measurementId: "G-8QDFJ48JX2"
     },
     key: 'ssc4234',
+    glp: '1060885389742-b0nhb8fpksrcoqgqj8kbukeiursoo7ni.apps.googleusercontent.com'
 };
 
 /*

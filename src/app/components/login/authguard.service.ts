@@ -7,7 +7,7 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot, Router, CanActivate } from
 export class AuthguardService implements CanActivate {
   constructor(private _router: Router) { }
   canActivate(_active: ActivatedRouteSnapshot, _state: RouterStateSnapshot): boolean {
-    if (localStorage.getItem('pass') != null) {
+    if (localStorage.getItem('id') != null) {
       return true;
     }
     this._router.navigate(['']);

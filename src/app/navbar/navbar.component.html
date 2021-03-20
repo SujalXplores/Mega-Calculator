@@ -1,8 +1,15 @@
 <mat-sidenav-container class="sidenav-container mat-app-background">
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar>
+      <img class="border border-primary rounded-circle mr-2" width="35px" height="35px" [src]="profile"><span>{{name}}</span>
+    </mat-toolbar>
+    <mat-divider></mat-divider>
     <mat-nav-list>
+      <a mat-list-item class="bmc-button" target="noopener noreferrer" href="https://www.buymeacoffee.com/sujal">
+        <img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" style="margin-right:10px;font-size: 26px;" alt="Buy me a coffee">
+        <span>Buy me a coffee</span>
+      </a>
       <div mat-subheader>DMDA</div>
       <a mat-list-item [routerLinkActive]="['active']" routerLink="/nav/cuboid">
         <mat-icon class="material-icons-outlined">view_in_ar</mat-icon>
@@ -44,10 +51,6 @@
         <mat-icon class="material-icons-outlined">calculate</mat-icon>
         <span>Decision Theory</span>
       </a>
-      <a mat-list-item class="bmc-button" target="noopener noreferrer" href="https://www.buymeacoffee.com/sujal">
-        <img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee">
-        <span style="margin-left:5px">Buy me a coffee</span>
-      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -58,9 +61,6 @@
       </button>
       <span>Mega Calculator</span>
       <div class="ml-auto">
-        <button mat-icon-button (click)='onLogout()'>
-          <mat-icon class="material-icons-outlined">logout</mat-icon>
-        </button>
         <button mat-icon-button [matMenuTriggerFor]="menu">
           <mat-icon class="material-icons-outlined">more_vert</mat-icon>
         </button>
@@ -69,25 +69,17 @@
             <mat-icon class="material-icons-outlined" color="primary">badge</mat-icon>
             <span>Admin Panel</span>
           </button>
-          <button mat-menu-item (click)="angular()">
-            <mat-icon class="material-icons-outlined" color="warn">hdr_auto</mat-icon>
-            <span>Angular v11.2.5</span>
+          <button mat-menu-item (click)="bugReport()">
+            <mat-icon class="material-icons-outlined" color="warn">bug_report</mat-icon>
+            <span>Report Bug</span>
           </button>
           <button mat-menu-item (click)="telegram()">
             <mat-icon class="material-icons-outlined" color="accent">memory</mat-icon>
             <span>Daily Tech News</span>
           </button>
-          <button mat-menu-item (click)="bugReport()">
-            <mat-icon class="material-icons-outlined" color="warn">bug_report</mat-icon>
-            <span>Report Bug</span>
-          </button>
-          <button mat-menu-item (click)="sslCheck()">
-            <mat-icon class="material-icons-outlined" style="color: lightgreen;">https</mat-icon>
-            <span>Safety Check</span>
-          </button>
-          <button mat-menu-item (click)="firebase()">
-            <mat-icon class="material-icons-outlined" style="color: orange;">local_fire_department</mat-icon>
-            <span>Backed by Firebase</span>
+          <button mat-menu-item (click)='onLogout()'>
+            <mat-icon class="material-icons-outlined" color="warn">logout</mat-icon>
+            <span>Log out</span>
           </button>
         </mat-menu>
       </div>

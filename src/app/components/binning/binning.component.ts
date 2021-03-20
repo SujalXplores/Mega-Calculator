@@ -42,7 +42,7 @@ export class BinningComponent implements OnInit {
     });
   }
 
-  onBinning() {
+  onBinning(): void {
     this.loading = true;
     this.input_data.splice(0, this.input_data.length);
     this.input_data.push(this.binningForm.value.bins.split(","));
@@ -57,7 +57,7 @@ export class BinningComponent implements OnInit {
     this.myStepper.next();
   }
 
-  onAnswer() {
+  onAnswer(): void {
     this.loading = true;
     this.n_value = this.n_value_Form.value.n_value;
     this.splitted_array = this.splitToChunks(this.sorted_array);
@@ -82,7 +82,7 @@ export class BinningComponent implements OnInit {
     return result;
   }
 
-  onStepperReset() {
+  onStepperReset(): void {
     this.num_array = [];
     this.sorted_array = [];
     this.splitted_array = [];
