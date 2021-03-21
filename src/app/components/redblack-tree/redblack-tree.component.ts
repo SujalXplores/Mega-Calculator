@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { DomSanitizer, Title } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-redblack-tree',
@@ -7,8 +8,10 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./redblack-tree.component.scss']
 })
 export class RedblackTreeComponent implements OnInit {
-  constructor(private titleService: Title) {
-    this.titleService.setTitle("Red Black Tree")
+  url: any;
+  constructor(private titleService: Title, private sanitize: DomSanitizer) {
+    this.titleService.setTitle("Red Black Tree");
+    this.url = this.sanitize.bypassSecurityTrustResourceUrl(environment.url + 'RedBlack.html');
   }
 
   ngOnInit(): void {

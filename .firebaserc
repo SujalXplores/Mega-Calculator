@@ -1,14 +1,5 @@
 {
   "projects": {
     "default": "megacalculator-4234"
-  },
-  "targets": {
-    "megacalculator-4234": {
-      "hosting": {
-        "megacalculator": [
-          "megacalculator-4234"
-        ]
-      }
-    }
   }
 }

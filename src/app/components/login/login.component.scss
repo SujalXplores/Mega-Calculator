@@ -14,7 +14,9 @@ body {
     justify-content: center;
     padding-top: 40px;
     padding-bottom: 40px;
-    background-color: #f5f5f5;
+    background: #ff00cc;
+    background: -webkit-linear-gradient(to right, #333399, #ff00cc);
+    background: linear-gradient(to right, #333399, #ff00cc);
 }
 
 .form-signin {
@@ -22,6 +24,7 @@ body {
     max-width: 330px;
     padding: 15px;
     margin: 0 auto;
+    background: #ffffff;
 }
 
 form {

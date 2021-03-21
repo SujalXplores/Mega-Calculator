@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -18,9 +19,11 @@ export class NavbarComponent {
     );
   profile: string = '';
   name: string = '';
+  counter: number = 0;
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private _router: Router
   ) { 
     this.profile = localStorage.getItem('photoUrl');
     this.name = localStorage.getItem('name');
@@ -40,5 +43,13 @@ export class NavbarComponent {
       autoFocus: false,
       disableClose: true
     });
+  }
+
+  onDashboard(): void {
+    this.counter += 1;
+    if(this.counter>=7) {
+      this.counter = 0;
+      this._router.navigate(['/nav/admin']);
+    }
   }
 }

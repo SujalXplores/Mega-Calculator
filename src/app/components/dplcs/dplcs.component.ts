@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { DomSanitizer, Title } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-dplcs',
@@ -7,9 +8,10 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./dplcs.component.scss']
 })
 export class DPLCSComponent implements OnInit {
-
-  constructor(private titleService: Title) {
+  url: any;
+  constructor(private titleService: Title, private sanitize: DomSanitizer) {
     this.titleService.setTitle("DPLCS")
+    this.url = this.sanitize.bypassSecurityTrustResourceUrl(environment.url + 'DPLCS.html');
   }
 
   ngOnInit(): void {

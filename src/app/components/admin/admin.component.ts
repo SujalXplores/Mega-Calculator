@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Title } from '@angular/platform-browser';
-import { Visitors } from 'src/app/visitors.model';
-import { HotToastService } from '@ngneat/hot-toast';
 import { PasswordDialogComponent } from './password-dialog/password-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment.prod';
 import { User } from '../login/user.model';
 import { ViewMoreComponent } from './view-more/view-more.component';
-import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-admin',
@@ -17,12 +16,10 @@ import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.compone
 })
 export class AdminComponent implements OnInit {
   user_info: User[] = [];
-  visitor_count: Visitors[] = [];
-  count: number = 0;
+  private unsubscribe = new Subject();
   constructor(
     private titleService: Title,
     private _fireStore: AngularFirestore,
-    private toast: HotToastService,
     private dialog: MatDialog
   ) {
     this.titleService.setTitle("Admin Panel");
@@ -38,7 +35,7 @@ export class AdminComponent implements OnInit {
         disableClose: false
       });
     }
-    this._fireStore.collection("gusers").snapshotChanges().subscribe(arr => {
+    this._fireStore.collection("gusers").snapshotChanges().pipe(takeUntil(this.unsubscribe)).subscribe(arr => {
       this.user_info = arr.map(item => {
         return {
           id: item.payload.doc.id,
@@ -50,6 +47,11 @@ export class AdminComponent implements OnInit {
         } as User;
       });
     });
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 
   viewMore(item: User): void {

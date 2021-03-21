@@ -58,7 +58,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     });
     this.auth.authState.pipe(takeUntil(this.unsubscribe)).subscribe((user) => {
       this.user = user;
-      console.log(this.user);
       if (user != null) {
         this.is_exist = this.user_info.find(({ guid }) => guid == user.id);
         if (this.is_exist) {

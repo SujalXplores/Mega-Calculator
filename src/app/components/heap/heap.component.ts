@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { DomSanitizer, Title } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-heap',
@@ -7,9 +8,10 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./heap.component.scss']
 })
 export class HeapComponent implements OnInit {
-
-  constructor(private titleService: Title) {
-    this.titleService.setTitle("Heap Sort")
+  url: any;
+  constructor(private titleService: Title, private sanitize: DomSanitizer) {
+    this.titleService.setTitle("Heap Sort");
+    this.url = this.sanitize.bypassSecurityTrustResourceUrl(environment.url + 'Heap.html');
   }
 
   ngOnInit(): void {
