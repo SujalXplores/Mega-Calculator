@@ -29,7 +29,6 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/assets/icon-font.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
@@ -98,7 +97,6 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/assets/icon-font.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [

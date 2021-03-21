@@ -12,12 +12,8 @@
                     <mat-error>This field is required!</mat-error>
                 </mat-form-field>
                 <hr>
-                <button class="mt-3" [disabled]="!binningForm.valid || loading" type="submit" mat-raised-button
-                    color="primary">
-                    <mat-icon *ngIf="loading">
-                        <mat-spinner mode="indeterminate" diameter="20"></mat-spinner>
-                    </mat-icon>
-                    <span *ngIf="!loading">Calculate</span>
+                <button class="mt-3" [disabled]="!binningForm.valid" type="submit" mat-raised-button color="primary">
+                    <span>Calculate</span>
                 </button>
             </form>
         </mat-step>
@@ -37,11 +33,8 @@
                     <mat-hint>Note: In question if value of W is given then enter that value !</mat-hint>
                     <mat-error>This field is required!</mat-error>
                 </mat-form-field>
-                <button class="mt-3" [disabled]="!n_value_Form.valid || loading" type="submit" mat-raised-button color="primary">
-                    <mat-icon *ngIf="loading">
-                        <mat-spinner mode="indeterminate" diameter="20"></mat-spinner>
-                    </mat-icon>
-                    <span *ngIf="!loading">Answer</span>
+                <button class="mt-3" [disabled]="!n_value_Form.valid" type="submit" mat-raised-button color="primary">
+                    <span>Answer</span>
                 </button>
             </form>
         </mat-step>
@@ -53,8 +46,7 @@
             <h3><b>Smoothing by Bin Means</b></h3>
             <h3 *ngFor="let item of sum_array;let i=index;">Sum of Bin-{{i}} / N ≈ {{item}}</h3>
             <h3 *ngFor="let x of bin_means;let i=index;">Bin-{{i}} ≈ {{bin_means[i]}}</h3>
-            <button class="mt-3" mat-raised-button (click)="onStepperReset()">
-                <mat-icon>replay</mat-icon>
+            <button color="warn" class="mt-3" mat-raised-button (click)="onStepperReset()">
                 <span>Reset</span>
             </button>
         </mat-step>

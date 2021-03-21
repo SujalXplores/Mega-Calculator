@@ -5,3 +5,15 @@ thead {
         }
     }
 }
+
+mat-form-field {
+    width: 100%;
+    max-width: 21%;
+}
+
+#cuboid {
+    background-color: #ffffff;
+    background: url("../../../assets/cuboid.png") no-repeat scroll;
+    background-size: 100% 460px;
+    background-clip: border-box;
+}

@@ -34,6 +34,11 @@ button {
     margin-left: 0.5rem;
   }
 }
+
 a :disabled {
   background: #fff;
+}
+
+#title {
+  user-select: none;
 }

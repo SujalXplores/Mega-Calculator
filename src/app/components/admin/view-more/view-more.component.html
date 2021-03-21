@@ -1,15 +1,17 @@
-<mat-card>
-    <mat-card-header>
+<div class="card mb-3 mat-card">
+    <mat-card-header class="mt-1 ml-1">
         <img mat-card-avatar [src]="info.photoUrl" />
         <mat-card-title>{{info.name}}</mat-card-title>
-        <mat-card-subtitle>{{info.isPremium == false ? 'User' : 'Premium User'}}</mat-card-subtitle>
+        <mat-card-subtitle>{{info.isPremium == false ? 'Free' : 'Premium User'}}</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content>
-        <p>{{info.email}}</p>
-    </mat-card-content>
-    <div style="margin-top:200px"></div>
-    <mat-card-actions>
-        <button mat-stroked-button color="primary">Promote</button>
-        <button mat-stroked-button color="warn" (click)="onNoClick()">Close</button>
-    </mat-card-actions>
-</mat-card>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">Email: {{info.email}}</h3>
+        <p class="card-text">
+            <button class="mr-2" mat-stroked-button color="primary">Promote</button>
+            <button mat-stroked-button color="warn" (click)="onNoClick()">Close</button>
+        </p>
+    </div>
+</div>
+<mat-card style="display: none;"></mat-card>

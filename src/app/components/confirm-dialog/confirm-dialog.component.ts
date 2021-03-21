@@ -20,12 +20,20 @@ export class ConfirmDialogComponent {
 
   onConfirmExit(): void {
     this.dialogRef.close(true);
-    this._auth.signOut().then().catch(e=>{
+    this._auth.signOut().then(()=>{
       this._toast.show("Come back soon.", {
         icon: '👋',
+        id: 'logout',
         position: 'bottom-center',
         theme: 'snackbar'
-      })
+      });
+    }).catch(()=>{
+      this._toast.show("Come back soon.", {
+        icon: '👋',
+        id: 'logout',
+        position: 'bottom-center',
+        theme: 'snackbar'
+      });
     });
     localStorage.clear();
     this._router.navigate(['']);

@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   user_info: User[] = [];
   private unsubscribe = new Subject();
   is_exist: any;
-  a: any;
   constructor(
     private titleService: Title,
     private _fireStore: AngularFirestore,
@@ -30,7 +29,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this._fireStore.collection("gusers").snapshotChanges().subscribe(arr => {
+    this._fireStore.collection("gusers").snapshotChanges().pipe(takeUntil(this.unsubscribe)).subscribe(arr => {
       this.user_info = arr.map(item => {
         return {
           id: item.payload.doc.id,
@@ -46,12 +45,13 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.unsubscribe.next();
     this.unsubscribe.complete();
   }
-  
+
   onGoogleSignIn(): void {
-    this.auth.signIn(GoogleLoginProvider.PROVIDER_ID).then(()=>{
+    this.auth.signIn(GoogleLoginProvider.PROVIDER_ID).then(() => {
       this._router.navigate(['/nav/cuboid']);
-    },()=>{
+    }, () => {
       this.toast.warning("Login window closed !", {
+        id: 'closed',
         theme: 'snackbar',
         position: 'bottom-center'
       });
@@ -66,6 +66,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           localStorage.setItem('name', user.name);
           this.toast.show("Welcome Aboard " + user.firstName, {
             theme: 'snackbar',
+            id: 'welcome',
             icon: '😄',
             position: 'bottom-center'
           });

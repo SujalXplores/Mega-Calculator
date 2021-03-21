@@ -32,7 +32,7 @@ export class AdminComponent implements OnInit {
       this.dialog.open(PasswordDialogComponent, {
         width: "300px",
         autoFocus: true,
-        disableClose: false
+        disableClose: true
       });
     }
     this._fireStore.collection("gusers").snapshotChanges().pipe(takeUntil(this.unsubscribe)).subscribe(arr => {
@@ -57,7 +57,6 @@ export class AdminComponent implements OnInit {
   viewMore(item: User): void {
     this.dialog.open(ViewMoreComponent, {
       width: "400px",
-      height: "400px",
       autoFocus: false,
       disableClose: true,
       data: item

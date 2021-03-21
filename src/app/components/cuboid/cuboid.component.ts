@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 
@@ -12,7 +12,6 @@ export class CuboidComponent implements OnInit {
     this.titleService.setTitle("Cuboid");
   }
   cuboidForm: FormGroup;
-  loading: boolean = false;
   is_table_show: boolean = false;
   data: any = [];
   col2_data: any = [];
@@ -24,7 +23,7 @@ export class CuboidComponent implements OnInit {
       in_2: new FormControl("I", [Validators.required]),
       in_3: new FormControl("S", [Validators.required]),
       in_4: new FormControl("D", [Validators.required])
-    })
+    });
   }
 
   onCuboid(): void {
@@ -32,7 +31,6 @@ export class CuboidComponent implements OnInit {
     this.col3_data = [];
     this.unique_value = [];
     this.data = [];
-    this.loading = true;
     this.data = this.cuboidForm.value;
     this.col2_data.push(this.data.in_1 + this.data.in_2 + this.data.in_4);
     this.col2_data.push(this.data.in_2 + this.data.in_1 + this.data.in_3);
@@ -45,7 +43,6 @@ export class CuboidComponent implements OnInit {
     this.unique_value.push(this.data.in_1 + this.data.in_2, this.data.in_2 + this.data.in_4, this.data.in_1 + this.data.in_4, this.data.in_1 + this.data.in_2, this.data.in_1 + this.data.in_3, this.data.in_2 + this.data.in_3, this.data.in_2 + this.data.in_3, this.data.in_2 + this.data.in_4, this.data.in_3 + this.data.in_4, this.data.in_3 + this.data.in_4, this.data.in_1 + this.data.in_3, this.data.in_1 + this.data.in_4);
     var tmpset = new Set(this.unique_value);
     this.unique_value = [...tmpset];
-    this.loading = false;
     this.is_table_show = true;
   }
 }

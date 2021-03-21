@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class PasswordDialogComponent {
   constructor(
-    public dialogRef: MatDialogRef<PasswordDialogComponent>,
+    private dialogRef: MatDialogRef<PasswordDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public key: string,
     private toast: HotToastService,
     private _router: Router
