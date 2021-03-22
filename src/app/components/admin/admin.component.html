@@ -6,7 +6,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h1 mat-dialog-title>
-                            <mat-icon color="accent" style="font-size: 40px;">people</mat-icon>
+                            <mat-icon style="color: rgb(0, 133, 0);font-size: 40px;">people</mat-icon>
                         </h1>
                         <h3 class="card-title">Total Users</h3>
                         <h4 class="card-subtitle mb-2">{{user_info.length}}</h4>
@@ -20,7 +20,7 @@
         <table class="table mat-elevation-z8 mt-3">
             <thead>
                 <tr>
-                    <td>Pic</td>
+                    <td>Profile Pic</td>
                     <td>Name</td>
                     <td>Actions</td>
                 </tr>
@@ -29,8 +29,11 @@
                 <td><img class="border border-primary rounded-circle mr-2" width="35px" height="35px" [src]="item.photoUrl" /></td>
                 <td>{{item.name}}</td>
                 <td>
-                    <button mat-icon-button color="accent" (click)="viewMore(item)">
+                    <button mat-icon-button (click)="viewMore(item)">
                         <mat-icon>open_in_new</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="onDelete(item.id)" color="warn">
+                        <mat-icon>delete</mat-icon>
                     </button>
                 </td>
             </tr>

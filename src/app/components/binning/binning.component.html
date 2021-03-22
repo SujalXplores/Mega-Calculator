@@ -7,7 +7,7 @@
                 autocomplete="off">
                 <mat-form-field class="mr-2 w-100" appearance="fill">
                     <mat-label>Bin</mat-label>
-                    <input matInput formControlName="bins" pattern="^\d{1,9}(,\d{1,9})*$" autofocus required>
+                    <input matInput formControlName="bins" pattern="^\d{1,9}(,\d{1,9})*$" required>
                     <mat-hint>e.g. 1,20,35,40,5,6</mat-hint>
                     <mat-error>This field is required!</mat-error>
                 </mat-form-field>
@@ -46,7 +46,7 @@
             <h3><b>Smoothing by Bin Means</b></h3>
             <h3 *ngFor="let item of sum_array;let i=index;">Sum of Bin-{{i}} / N ≈ {{item}}</h3>
             <h3 *ngFor="let x of bin_means;let i=index;">Bin-{{i}} ≈ {{bin_means[i]}}</h3>
-            <button color="warn" class="mt-3" mat-raised-button (click)="onStepperReset()">
+            <button color="warn" class="mt-3" type="reset" mat-raised-button (click)="onStepperReset()">
                 <span>Reset</span>
             </button>
         </mat-step>

@@ -2,7 +2,7 @@
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar>
-      <img class="border border-primary rounded-circle mr-2" width="35px" height="35px" [src]="profile"><span>{{name}}</span>
+      <img class="rounded-circle mr-2" width="35px" height="35px" [src]="profile"><span>{{name}}</span>
     </mat-toolbar>
     <mat-divider></mat-divider>
     <mat-nav-list>
@@ -70,7 +70,7 @@
             <span>Report Bug</span>
           </button>
           <button mat-menu-item (click)="telegram()">
-            <mat-icon class="material-icons-outlined" color="accent">memory</mat-icon>
+            <mat-icon class="material-icons-outlined" color="primary">memory</mat-icon>
             <span>Daily Tech News</span>
           </button>
           <button mat-menu-item (click)='onLogout()'>

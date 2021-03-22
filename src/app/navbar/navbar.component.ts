@@ -26,7 +26,7 @@ export class NavbarComponent {
     private _router: Router
   ) { 
     this.profile = localStorage.getItem('photoUrl');
-    this.name = localStorage.getItem('name');
+    this.name = localStorage.getItem('name').replace(/[0-9]/g, '');
   }
 
   telegram(): void {

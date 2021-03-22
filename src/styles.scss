@@ -1,18 +1,4 @@
-@import "~@angular/material/theming";
-@include mat-core();
-$megacalculator-primary: mat-palette($mat-indigo);
-$megacalculator-accent: mat-palette($mat-pink, A200, A100, A400);
-$megacalculator-warn: mat-palette($mat-red);
-$megacalculator-theme: mat-light-theme(
-  (
-    color: (
-      primary: $megacalculator-primary,
-      accent: $megacalculator-accent,
-      warn: $megacalculator-warn,
-    ),
-  )
-);
-@include angular-material-theme($megacalculator-theme);
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 html,
 body {

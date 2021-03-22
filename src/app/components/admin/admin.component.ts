@@ -8,6 +8,7 @@ import { User } from '../login/user.model';
 import { ViewMoreComponent } from './view-more/view-more.component';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { HotToastService } from '@ngneat/hot-toast';
 
 @Component({
   selector: 'app-admin',
@@ -20,7 +21,8 @@ export class AdminComponent implements OnInit {
   constructor(
     private titleService: Title,
     private _fireStore: AngularFirestore,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private _toast: HotToastService
   ) {
     this.titleService.setTitle("Admin Panel");
   }
@@ -52,6 +54,19 @@ export class AdminComponent implements OnInit {
   ngOnDestroy(): void {
     this.unsubscribe.next();
     this.unsubscribe.complete();
+  }
+
+  onDelete(id: string): void {
+    const p = prompt("Are you sure you want to delete?");
+    if(p) {
+      this._fireStore.collection("gusers").doc(id).delete().then(()=>{
+        this._toast.success("Record Deleted !", {
+            theme: 'snackbar',
+            position: 'bottom-center',
+            id: 'delete'
+        });
+      });
+    }
   }
 
   viewMore(item: User): void {
