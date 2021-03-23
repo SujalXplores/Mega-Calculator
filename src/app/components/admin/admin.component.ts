@@ -54,11 +54,12 @@ export class AdminComponent implements OnInit {
   ngOnDestroy(): void {
     this.unsubscribe.next();
     this.unsubscribe.complete();
+    localStorage.removeItem("admin");
   }
 
   onDelete(id: string): void {
-    const p = prompt("Are you sure you want to delete?");
-    if(p) {
+    const p = confirm("Are you sure you want to delete?");
+    if(p === true) {
       this._fireStore.collection("gusers").doc(id).delete().then(()=>{
         this._toast.success("Record Deleted !", {
             theme: 'snackbar',

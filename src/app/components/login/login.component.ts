@@ -97,7 +97,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       });
     }, () => {
       this.is_disabled = false;
-      this.toast.warning("Login window closed !", {
+      this.toast.warning("Can't connect to Google !", {
         id: 'closed',
         theme: 'snackbar',
         position: 'bottom-center'
