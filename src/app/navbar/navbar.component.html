@@ -2,53 +2,55 @@
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar>
-      <img class="rounded-circle mr-2" width="35px" height="35px" [src]="profile"><span>{{name}}</span>
+      <img loading="eager" class="rounded-circle mr-2" width="35px" height="35px" [src]="profile">
+      <span>{{name}}</span>
     </mat-toolbar>
     <mat-divider></mat-divider>
     <mat-nav-list>
       <a mat-list-item class="bmc-button" target="noopener noreferrer" href="https://www.buymeacoffee.com/sujal">
-        <img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" style="margin-right:10px;font-size: 26px;" alt="Buy me a coffee">
+        <img loading="eager" src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" style="margin-right:10px;font-size: 26px;"
+          alt="Buy me a coffee">
         <span>Buy me a coffee</span>
       </a>
       <div mat-subheader>DMDA</div>
       <a mat-list-item [routerLinkActive]="['active']" routerLink="/nav/cuboid">
-        <mat-icon class="material-icons-outlined">view_in_ar</mat-icon>
+        <mat-icon class="material-icons-outlined nav-i">view_in_ar</mat-icon>
         <span>Cuboid (4D)</span>
       </a>
       <a mat-list-item [routerLinkActive]="['active']" routerLink="/nav/binning">
-        <mat-icon class="material-icons-outlined">bathroom</mat-icon>
+        <mat-icon class="material-icons-outlined nav-i">bathroom</mat-icon>
         <span>Binning</span>
       </a>
       <a mat-list-item [routerLinkActive]="['active']" routerLink="/nav/chisquare">
-        <mat-icon class="material-icons-outlined">superscript</mat-icon>
+        <mat-icon class="material-icons-outlined nav-i">superscript</mat-icon>
         <span>Chi Square table</span>
       </a>
       <mat-divider></mat-divider>
       <div mat-subheader>DAA</div>
       <a mat-list-item [routerLinkActive]="['active']" routerLink="/nav/rbtree">
-        <mat-icon class="material-icons-outlined" style="transform: rotate(90deg)">share</mat-icon>
+        <mat-icon class="material-icons-outlined nav-i" style="transform: rotate(90deg)">share</mat-icon>
         <span>Red Black Tree</span>
       </a>
       <a mat-list-item [routerLinkActive]="['active']" routerLink="/nav/bst">
-        <mat-icon class="material-icons-outlined">manage_search</mat-icon>
+        <mat-icon class="material-icons-outlined nav-i">manage_search</mat-icon>
         <span>Binary Search Tree</span>
       </a>
       <a mat-list-item [routerLinkActive]="['active']" routerLink="/nav/dplcs">
-        <mat-icon class="material-icons-outlined">spa</mat-icon>
+        <mat-icon class="material-icons-outlined nav-i">spa</mat-icon>
         <span>Longest Common Subsequence</span>
       </a>
       <a mat-list-item [routerLinkActive]="['active']" routerLink="/nav/heap">
-        <mat-icon class="material-icons-outlined">sort</mat-icon>
+        <mat-icon class="material-icons-outlined nav-i">sort</mat-icon>
         <span>Heap Sort</span>
       </a>
       <a mat-list-item [routerLinkActive]="['active']" routerLink="/nav/mastertheorm">
-        <mat-icon class="material-icons-outlined">title</mat-icon>
+        <mat-icon class="material-icons-outlined nav-i">title</mat-icon>
         <span>Master Theorm</span>
       </a>
       <mat-divider></mat-divider>
       <div mat-subheader>Quantitative Techniques</div>
       <a mat-list-item [routerLinkActive]="['active']" routerLink="/nav/decisionTheory">
-        <mat-icon class="material-icons-outlined">calculate</mat-icon>
+        <mat-icon class="material-icons-outlined nav-i">calculate</mat-icon>
         <span>Decision Theory</span>
       </a>
     </mat-nav-list>
@@ -59,7 +61,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon class="material-icons-outlined" aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span id="title" (click)="onDashboard()">Mega Calculator</span>
+      <span class="d-none d-sm-block" id="title" (click)="onDashboard()">Mega Calculator</span>
       <div class="ml-auto">
         <button mat-icon-button [matMenuTriggerFor]="menu">
           <mat-icon class="material-icons-outlined">more_vert</mat-icon>

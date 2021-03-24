@@ -5,9 +5,9 @@
             <h1>Step 1: Enter digits separated with comma(,)</h1>
             <form class="mx-auto mt-3" [formGroup]="binningForm" (ngSubmit)="onBinning()" spellcheck="false"
                 autocomplete="off">
-                <mat-form-field class="mr-2 w-100" appearance="fill">
+                <mat-form-field class="col-sm-6 mr-2 w-100" appearance="fill">
                     <mat-label>Bin</mat-label>
-                    <input matInput formControlName="bins" pattern="^\d{1,9}(,\d{1,9})*$" required>
+                    <input class="input-lg" matInput formControlName="bins" pattern="^\d{1,9}(,\d{1,9})*$" required>
                     <mat-hint>e.g. 1,20,35,40,5,6</mat-hint>
                     <mat-error>This field is required!</mat-error>
                 </mat-form-field>
@@ -27,9 +27,9 @@
             </div>
             <h1>Step 2:</h1>
             <form class="mx-auto mt-3" [formGroup]="n_value_Form" (ngSubmit)="onAnswer()" spellcheck="false" autocomplete="off">
-                <mat-form-field class="mr-2 w-100" appearance="fill">
+                <mat-form-field class="col-sm-6 mr-2 w-100" appearance="fill">
                     <mat-label>Enter value for W</mat-label>
-                    <input matInput formControlName="n_value" type="number" maxlength="2" required>
+                    <input class="input-lg" matInput formControlName="n_value" type="number" maxlength="2" required>
                     <mat-hint>Note: In question if value of W is given then enter that value !</mat-hint>
                     <mat-error>This field is required!</mat-error>
                 </mat-form-field>

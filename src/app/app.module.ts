@@ -39,6 +39,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import { MatBadgeModule } from "@angular/material/badge";
 
 import { CuboidComponent } from './components/cuboid/cuboid.component';
 import { Pagenotfound404Component } from './components/pagenotfound404/pagenotfound404.component';
@@ -121,6 +122,7 @@ import { ViewMoreComponent } from './components/admin/view-more/view-more.compon
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
+    MatBadgeModule,
     MatPaginatorModule,
     ClipboardModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
